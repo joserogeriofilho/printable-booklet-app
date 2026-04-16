@@ -7,7 +7,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "4.0.0-alpha.13",
+    "@tailwindcss/postcss": "^4.2.2",
     "@types/node": "20.11.17",
     "@types/react": "18.2.55",
     "@types/react-dom": "18.2.19",
@@ -20,7 +20,7 @@
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "sugar-high": "^0.6.0",
-    "tailwindcss": "4.0.0-alpha.13",
+    "tailwindcss": "^4.2.2",
     "typescript": "^5"
   },
   "devDependencies": {
