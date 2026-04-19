@@ -1,1 +1,2 @@
-export { generateLayout } from "./generate-layout";
+export { generateLayout, getTotalPages } from "./booklet-utils";
+export type { BookletSize } from "./booklet-utils";

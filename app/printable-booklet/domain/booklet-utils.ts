@@ -5,7 +5,7 @@ export const Sizes = {
   A8: "A8",
 } as const;
 
-type BookletSize = keyof typeof Sizes;
+export type BookletSize = keyof typeof Sizes;
 
 const Configs = {
   A5: {
@@ -25,6 +25,11 @@ const Configs = {
     rows: 4,
   },
 } as const;
+
+export const getTotalPages = (numberOfSheets: number, size: BookletSize) => {
+  const config = Configs[size];
+  return numberOfSheets * config.rows * config.cols * 2;
+};
 
 export const generateLayout = (numberOfSheets: number, size: BookletSize) => {
   const config = Configs[size];

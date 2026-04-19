@@ -1,5 +1,5 @@
 import { expect, describe, it } from "vitest";
-import { generateLayout, Sizes } from "./generate-layout";
+import { generateLayout, Sizes } from "./booklet-utils";
 
 describe("generate-layout", () => {
   it("should calculate the correct number of pages", () => {
