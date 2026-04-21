@@ -1,3 +1,8 @@
+import { jsPDF } from "jspdf";
+
+const A4_WIDTH = 210;
+const A4_HEIGHT = 297;
+
 export const Sizes = {
   A5: "A5",
   A6: "A6",
@@ -11,18 +16,22 @@ const Configs = {
   A5: {
     cols: 2,
     rows: 1,
+    portrait: false,
   },
   A6: {
     cols: 2,
     rows: 2,
+    portrait: true,
   },
   A7: {
     cols: 4,
     rows: 2,
+    portrait: false,
   },
   A8: {
     cols: 4,
     rows: 4,
+    portrait: true,
   },
 } as const;
 
@@ -33,8 +42,6 @@ export const getTotalPages = (numberOfSheets: number, size: BookletSize) => {
 
 export const generateLayout = (numberOfSheets: number, size: BookletSize) => {
   const config = Configs[size];
-
-  console.log("config", config);
 
   const totalPages = numberOfSheets * config.rows * config.cols * 2;
 
@@ -66,4 +73,54 @@ export const generateLayout = (numberOfSheets: number, size: BookletSize) => {
     totalPages,
     layout,
   };
+};
+
+export const generatePdf = async (
+  numberOfSheets: number,
+  size: BookletSize,
+  files: FileList,
+) => {
+  const { layout } = generateLayout(numberOfSheets, size);
+
+  const bookletPageWidth = Configs[size].portrait
+    ? A4_WIDTH / Configs[size].cols
+    : A4_HEIGHT / Configs[size].cols;
+  const bookletPageHeight = Configs[size].portrait
+    ? A4_HEIGHT / Configs[size].rows
+    : A4_WIDTH / Configs[size].rows;
+
+  const doc = new jsPDF({
+    orientation: Configs[size].portrait ? "portrait" : "landscape",
+    unit: "mm",
+    format: "a4",
+  });
+
+  // Add image for each cell in the layout
+  for (let page = 0; page < numberOfSheets * 2; page++) {
+    for (let row = 0; row < Configs[size].rows; row++) {
+      for (let col = 0; col < Configs[size].cols; col++) {
+        const imgBase64 = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = (error) => reject(error);
+          reader.readAsDataURL(files[layout[page][row][col] - 1]);
+        });
+
+        doc.addImage(
+          imgBase64 as string,
+          "JPEG",
+          col * bookletPageWidth,
+          row * bookletPageHeight,
+          bookletPageWidth,
+          bookletPageHeight,
+        );
+      }
+    }
+
+    if (page < numberOfSheets * 2 - 1) {
+      doc.addPage();
+    }
+  }
+
+  doc.save("a4.pdf");
 };

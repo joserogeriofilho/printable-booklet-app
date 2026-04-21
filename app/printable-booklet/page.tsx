@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { getTotalPages } from "./domain";
+import { getTotalPages, generatePdf } from "./domain";
 import type { BookletSize } from "./domain";
 
 export default function Page() {
   const [numberOfSheets, setNumberOfSheets] = useState(1);
   const [size, setSize] = useState<BookletSize>("A5");
+  const [files, setFiles] = useState<FileList | null>(null);
 
   const totalPages = getTotalPages(numberOfSheets, size);
 
@@ -56,13 +57,22 @@ export default function Page() {
         </label>
         <span className="text-xs">Select {totalPages} images</span>
       </div>
-      <input type="file" id="images" name="images" className="mb-2" multiple />
+      <input
+        type="file"
+        id="images"
+        name="images"
+        className="mb-2"
+        multiple
+        onChange={(e) => setFiles(e.target.files)}
+      />
 
       <h2 className="mt-4 mb-4 text-lg font-medium">Preview</h2>
       <span>Soon...</span>
 
       <h2 className="mt-4 mb-4 text-lg font-medium">Download</h2>
-      <button>Download</button>
+      <button onClick={() => files && generatePdf(numberOfSheets, size, files)}>
+        Download
+      </button>
     </section>
   );
 }
