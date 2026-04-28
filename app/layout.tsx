@@ -11,15 +11,15 @@ import { baseUrl } from "./sitemap";
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Next.js Portfolio Starter",
-    template: "%s | Next.js Portfolio Starter",
+    default: "Printable Booklet — Make zines & booklets",
+    template: "%s | Printable Booklet",
   },
-  description: "This is my portfolio.",
+  description: "Create printable booklets from your images. Perfect for zines, mini photo books, and DIY publications.",
   openGraph: {
-    title: "My Portfolio",
-    description: "This is my portfolio.",
+    title: "Printable Booklet",
+    description: "Create printable booklets from your images. Perfect for zines, mini photo books, and DIY publications.",
     url: baseUrl,
-    siteName: "My Portfolio",
+    siteName: "Printable Booklet",
     locale: "en_US",
     type: "website",
   },
@@ -47,7 +47,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={cx(
-        "text-black bg-white dark:text-white dark:bg-black",
+        "text-stone-900 bg-stone-50 dark:text-stone-100 dark:bg-stone-950 font-[family-name:var(--font-geist-sans)]",
         GeistSans.variable,
         GeistMono.variable,
       )}

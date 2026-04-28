@@ -17,22 +17,22 @@ function ArrowIcon() {
 
 export default function Footer() {
   return (
-    <footer className="mb-16">
-      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
+    <footer className="mb-16 mt-16 border-t border-dashed border-stone-300 dark:border-stone-700 pt-8">
+      <ul className="font-sm flex flex-col space-x-0 space-y-2 text-stone-500 dark:text-stone-400 md:flex-row md:space-x-4 md:space-y-0">
         <li>
           <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            className="flex items-center text-sm transition-all hover:text-stone-800 dark:hover:text-stone-200"
             rel="noopener noreferrer"
             target="_blank"
             href="/"
           >
             <ArrowIcon />
-            <p className="ml-2 h-7">some link</p>
+            <span className="ml-2 h-7">site</span>
           </a>
         </li>
       </ul>
-      <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-        © {new Date().getFullYear()} MIT Licensed
+      <p className="mt-4 text-xs text-stone-400 dark:text-stone-500">
+        &copy; {new Date().getFullYear()} &mdash; MIT Licensed
       </p>
     </footer>
   );

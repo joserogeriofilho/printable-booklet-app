@@ -3,7 +3,7 @@
 @variant dark (&:where(.dark, .dark *));
 
 ::selection {
-  background-color: #47a3f3;
+  background-color: #dc2626;
   color: #fefefe;
 }
 
@@ -25,7 +25,6 @@ html {
 
 .prose .anchor {
   @apply absolute invisible no-underline;
-
   margin-left: -1em;
   padding-right: 0.5em;
   width: 80%;
@@ -69,7 +68,6 @@ html {
 }
 
 .prose img {
-  /* Don't apply styles to next/image */
   @apply m-0;
 }
 
@@ -106,7 +104,6 @@ html {
 }
 
 .prose > :first-child {
-  /* Override removing top margin, causing layout shift */
   margin-top: 1.25em !important;
   margin-bottom: 1.25em !important;
 }
@@ -116,11 +113,10 @@ pre::-webkit-scrollbar {
 }
 
 pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* Remove Safari input shadow on mobile */
 input[type="text"],
 input[type="email"] {
   -webkit-appearance: none;
@@ -137,4 +133,8 @@ table {
 
 .title {
   text-wrap: balance;
+}
+
+h2 {
+  @apply border-b border-dashed border-stone-300 dark:border-stone-600 pb-3;
 }
