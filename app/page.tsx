@@ -105,6 +105,10 @@ export default function Page() {
                 multiple
                 onChange={(e) => setFiles(e.target.files)}
               />
+              <p className="mt-2 text-xs text-stone-400 dark:text-stone-500 max-w-xs">
+                The order you select the images determines the page order in the
+                final booklet — first selected goes on page 1.
+              </p>
             </div>
           </div>
         </section>
