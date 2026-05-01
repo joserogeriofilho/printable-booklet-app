@@ -16,6 +16,7 @@
     "imagesLabel": "Imagens",
     "neededSuffix": "necessárias",
     "imagesHint": "A ordem em que você seleciona as imagens determina a ordem das páginas no livreto final — a primeira selecionada vai para a página 1.",
+    "notEnoughFiles": "Você deve selecionar pelo menos {totalPages} imagens.",
     "step2": "2. Pré-visualização",
     "previewPlaceholder": "Pré-visualização em breve",
     "step3": "3. Baixar",

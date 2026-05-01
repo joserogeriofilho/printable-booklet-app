@@ -16,6 +16,7 @@
     "imagesLabel": "Images",
     "neededSuffix": "needed",
     "imagesHint": "The order you select the images determines the page order in the final booklet — first selected goes on page 1.",
+    "notEnoughFiles": "You must select at least {totalPages} images.",
     "step2": "2. Preview",
     "previewPlaceholder": "Preview coming soon",
     "step3": "3. Download",

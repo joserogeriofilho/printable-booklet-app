@@ -20,6 +20,10 @@ export default function Page() {
 
   const totalPages = getTotalPages(numberOfSheets, size);
 
+  const onChangeFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFiles(e.target.files);
+  };
+
   return (
     <section>
       <header className="mb-12">
@@ -104,11 +108,16 @@ export default function Page() {
                 name="images"
                 className="w-full max-w-xs text-sm text-stone-500 dark:text-stone-400 file:mr-4 file:py-2.5 file:px-5 file:rounded-sm file:border-0 file:text-sm file:font-medium file:bg-stone-200 dark:file:bg-stone-700 file:text-stone-700 dark:file:text-stone-200 hover:file:bg-stone-300 dark:hover:file:bg-stone-600 file:cursor-pointer file:transition"
                 multiple
-                onChange={(e) => setFiles(e.target.files)}
+                onChange={onChangeFiles}
               />
               <p className="mt-2 text-xs text-stone-400 dark:text-stone-500 max-w-xs">
                 {t("imagesHint")}
               </p>
+              {files && files.length < totalPages && (
+                <p className="text-sm text-red-600 dark:text-red-400 mt-2">
+                  {t("notEnoughFiles", { totalPages })}
+                </p>
+              )}
             </div>
           </div>
         </section>
@@ -133,7 +142,7 @@ export default function Page() {
           <button
             className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 rounded-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-stone-900 transition disabled:opacity-40 disabled:cursor-not-allowed"
             onClick={() => files && generatePdf(numberOfSheets, size, files)}
-            disabled={!files}
+            disabled={!files || files.length < totalPages}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
