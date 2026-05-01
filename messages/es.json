@@ -10,7 +10,7 @@
     "title": "Folleto imprimible",
     "description": "Convierte tus imágenes en un folleto imprimible. Dobla, engrapa y comparte tu propio zine.",
     "step1": "1. Configura tu proyecto",
-    "sheetsLabel": "Hojas",
+    "sheetsLabel": "Hojas A4",
     "sheetsRange": "1 – 50",
     "sizeLabel": "Tamaño",
     "imagesLabel": "Imágenes",

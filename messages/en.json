@@ -10,7 +10,7 @@
     "title": "Printable booklet",
     "description": "Turn your images into a printable booklet. Fold, staple, and share your own zine.",
     "step1": "1. Setup your project",
-    "sheetsLabel": "Sheets",
+    "sheetsLabel": "A4 Sheets",
     "sheetsRange": "1 – 50",
     "sizeLabel": "Size",
     "imagesLabel": "Images",
