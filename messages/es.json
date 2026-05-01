@@ -1,0 +1,39 @@
+{
+  "Nav": {
+    "home": "inicio",
+    "aboutMe": "sobre mí"
+  },
+  "ThemeToggle": {
+    "label": "Cambiar tema"
+  },
+  "Home": {
+    "title": "Folleto imprimible",
+    "description": "Convierte tus imágenes en un folleto imprimible. Dobla, engrapa y comparte tu propio zine.",
+    "step1": "1. Configura tu proyecto",
+    "sheetsLabel": "Hojas",
+    "sheetsRange": "1 – 50",
+    "sizeLabel": "Tamaño",
+    "imagesLabel": "Imágenes",
+    "neededSuffix": "necesarias",
+    "imagesHint": "El orden en que seleccionas las imágenes determina el orden de las páginas en el folleto final — la primera seleccionada va en la página 1.",
+    "step2": "2. Vista previa",
+    "previewPlaceholder": "Vista previa próximamente",
+    "step3": "3. Descargar",
+    "downloadPdf": "Descargar PDF"
+  },
+  "About": {
+    "title": "Sobre mí",
+    "description": "Un lugar para escribir sobre ti, tus zines y tus proyectos."
+  },
+  "NotFound": {
+    "title": "404 - Página no encontrada",
+    "description": "La página que buscas no existe."
+  },
+  "Footer": {
+    "site": "sitio",
+    "copyright": "© {year} — Bajo licencia MIT"
+  },
+  "LocaleSwitcher": {
+    "label": "Cambiar idioma"
+  }
+}

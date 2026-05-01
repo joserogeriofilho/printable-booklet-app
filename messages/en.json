@@ -1,0 +1,39 @@
+{
+  "Nav": {
+    "home": "home",
+    "aboutMe": "about me"
+  },
+  "ThemeToggle": {
+    "label": "Toggle theme"
+  },
+  "Home": {
+    "title": "Printable booklet",
+    "description": "Turn your images into a printable booklet. Fold, staple, and share your own zine.",
+    "step1": "1. Setup your project",
+    "sheetsLabel": "Sheets",
+    "sheetsRange": "1 – 50",
+    "sizeLabel": "Size",
+    "imagesLabel": "Images",
+    "neededSuffix": "needed",
+    "imagesHint": "The order you select the images determines the page order in the final booklet — first selected goes on page 1.",
+    "step2": "2. Preview",
+    "previewPlaceholder": "Preview coming soon",
+    "step3": "3. Download",
+    "downloadPdf": "Download PDF"
+  },
+  "About": {
+    "title": "About me",
+    "description": "A place to write about yourself, your zines, and your projects."
+  },
+  "NotFound": {
+    "title": "404 - Page Not Found",
+    "description": "The page you are looking for does not exist."
+  },
+  "Footer": {
+    "site": "site",
+    "copyright": "© {year} — MIT Licensed"
+  },
+  "LocaleSwitcher": {
+    "label": "Switch language"
+  }
+}

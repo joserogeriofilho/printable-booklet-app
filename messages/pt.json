@@ -1,0 +1,39 @@
+{
+  "Nav": {
+    "home": "início",
+    "aboutMe": "sobre mim"
+  },
+  "ThemeToggle": {
+    "label": "Alternar tema"
+  },
+  "Home": {
+    "title": "Livreto imprimível",
+    "description": "Transforme suas imagens em um livreto imprimível. Dobre, grampeie e compartilhe seu próprio zine.",
+    "step1": "1. Configure seu projeto",
+    "sheetsLabel": "Folhas",
+    "sheetsRange": "1 – 50",
+    "sizeLabel": "Tamanho",
+    "imagesLabel": "Imagens",
+    "neededSuffix": "necessárias",
+    "imagesHint": "A ordem em que você seleciona as imagens determina a ordem das páginas no livreto final — a primeira selecionada vai para a página 1.",
+    "step2": "2. Pré-visualização",
+    "previewPlaceholder": "Pré-visualização em breve",
+    "step3": "3. Baixar",
+    "downloadPdf": "Baixar PDF"
+  },
+  "About": {
+    "title": "Sobre mim",
+    "description": "Um lugar para escrever sobre você, seus zines e seus projetos."
+  },
+  "NotFound": {
+    "title": "404 - Página não encontrada",
+    "description": "A página que você está procurando não existe."
+  },
+  "Footer": {
+    "site": "site",
+    "copyright": "© {year} — Licenciado sob MIT"
+  },
+  "LocaleSwitcher": {
+    "label": "Mudar idioma"
+  }
+}
