@@ -40,6 +40,27 @@ export default function Page() {
 
           <div className="space-y-5">
             <div>
+              <label
+                htmlFor="size"
+                className="block mb-2 text-sm font-medium text-stone-700 dark:text-stone-300"
+              >
+                {t("sizeLabel")}
+              </label>
+              <select
+                id="size"
+                name="size"
+                className={selectClasses}
+                value={size}
+                onChange={(e) => setSize(e.target.value as BookletSize)}
+              >
+                <option value="A5">A5 — 148 × 210 mm</option>
+                <option value="A6">A6 — 105 × 148 mm</option>
+                <option value="A7">A7 — 74 × 105 mm</option>
+                <option value="A8">A8 — 52 × 74 mm</option>
+              </select>
+            </div>
+
+            <div>
               <div className="flex items-center gap-2 mb-2">
                 <label
                   htmlFor="sheets"
@@ -63,27 +84,6 @@ export default function Page() {
                   setNumberOfSheets(parseInt(e.target.value) || 1)
                 }
               />
-            </div>
-
-            <div>
-              <label
-                htmlFor="size"
-                className="block mb-2 text-sm font-medium text-stone-700 dark:text-stone-300"
-              >
-                {t("sizeLabel")}
-              </label>
-              <select
-                id="size"
-                name="size"
-                className={selectClasses}
-                value={size}
-                onChange={(e) => setSize(e.target.value as BookletSize)}
-              >
-                <option value="A5">A5 — 148 × 210 mm</option>
-                <option value="A6">A6 — 105 × 148 mm</option>
-                <option value="A7">A7 — 74 × 105 mm</option>
-                <option value="A8">A8 — 52 × 74 mm</option>
-              </select>
             </div>
 
             <div>
