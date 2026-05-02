@@ -1,7 +1,8 @@
 import { jsPDF } from "jspdf";
+import { processImage } from "./image-processor";
 
-const A4_WIDTH = 210;
-const A4_HEIGHT = 297;
+const A4_WIDTH = 210; // 210 mm
+const A4_HEIGHT = 297; // 297 mm
 
 export const Sizes = {
   A5: "A5",
@@ -99,12 +100,11 @@ export const generatePdf = async (
   for (let page = 0; page < numberOfSheets * 2; page++) {
     for (let row = 0; row < Configs[size].rows; row++) {
       for (let col = 0; col < Configs[size].cols; col++) {
-        const imgBase64 = await new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result);
-          reader.onerror = (error) => reject(error);
-          reader.readAsDataURL(files[layout[page][row][col] - 1]);
-        });
+        const imgBase64 = await processImage(
+          files[layout[page][row][col] - 1],
+          bookletPageWidth,
+          bookletPageHeight,
+        );
 
         doc.addImage(
           imgBase64 as string,
