@@ -108,6 +108,7 @@ export default function Page() {
                 name="images"
                 className="w-full max-w-xs text-sm text-stone-500 dark:text-stone-400 file:mr-4 file:py-2.5 file:px-5 file:rounded-sm file:border-0 file:text-sm file:font-medium file:bg-stone-200 dark:file:bg-stone-700 file:text-stone-700 dark:file:text-stone-200 hover:file:bg-stone-300 dark:hover:file:bg-stone-600 file:cursor-pointer file:transition"
                 multiple
+                accept="image/*"
                 onChange={onChangeFiles}
               />
               <p className="mt-2 text-xs text-stone-400 dark:text-stone-500 max-w-xs">
