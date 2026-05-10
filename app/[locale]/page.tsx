@@ -42,35 +42,45 @@ export default function Page() {
 
       <div className="grid gap-y-5 grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
         <IllustradedSection>
-          <IllustradedSection.Text>{t("step1")}</IllustradedSection.Text>
+          <IllustradedSection.Text>
+            {t("instructions1")}
+          </IllustradedSection.Text>
           <IllustradedSection.Media>
             <img src="/images/01-print.svg" />
           </IllustradedSection.Media>
         </IllustradedSection>
 
         <IllustradedSection>
-          <IllustradedSection.Text>{t("step2")}</IllustradedSection.Text>
+          <IllustradedSection.Text>
+            {t("instructions2")}
+          </IllustradedSection.Text>
           <IllustradedSection.Media>
             <img src="/images/02-cut.svg" />
           </IllustradedSection.Media>
         </IllustradedSection>
 
         <IllustradedSection>
-          <IllustradedSection.Text>{t("step3")}</IllustradedSection.Text>
+          <IllustradedSection.Text>
+            {t("instructions3")}
+          </IllustradedSection.Text>
           <IllustradedSection.Media>
             <img src="/images/03-mount.svg" />
           </IllustradedSection.Media>
         </IllustradedSection>
 
         <IllustradedSection>
-          <IllustradedSection.Text>{t("step4")}</IllustradedSection.Text>
+          <IllustradedSection.Text>
+            {t("instructions4")}
+          </IllustradedSection.Text>
           <IllustradedSection.Media>
             <img src="/images/04-fold.svg" />
           </IllustradedSection.Media>
         </IllustradedSection>
 
         <IllustradedSection>
-          <IllustradedSection.Text>{t("step5")}</IllustradedSection.Text>
+          <IllustradedSection.Text>
+            {t("instructions5")}
+          </IllustradedSection.Text>
           <IllustradedSection.Media>
             <img src="/images/05-staple.svg" />
           </IllustradedSection.Media>

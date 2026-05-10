@@ -21,11 +21,11 @@
     "previewPlaceholder": "Pré-visualização em breve",
     "step3": "3. Baixar",
     "downloadPdf": "Baixar PDF",
-    "step1": "1. Imprima em ambos os lados do papel.",
-    "step2": "2. Corte as páginas do livreto .",
-    "step3": "3. Organize as páginas na ordem correta.",
-    "step4": "4. Encontre o meio do livreto e dobre-o pela metade.",
-    "step5": "5. Grampeie ou encadeie o livreto dobrado."
+    "instructions1": "1. Imprima em ambos os lados do papel.",
+    "instructions2": "2. Corte as páginas do livreto .",
+    "instructions3": "3. Organize as páginas na ordem correta.",
+    "instructions4": "4. Encontre o meio do livreto e dobre-o pela metade.",
+    "instructions5": "5. Grampeie ou encadeie o livreto dobrado."
   },
   "About": {
     "title": "Sobre mim",

@@ -21,11 +21,11 @@
     "previewPlaceholder": "Preview coming soon",
     "step3": "3. Download",
     "downloadPdf": "Download PDF",
-    "step1": "1. Print in both sides of the paper.",
-    "step2": "2. Cut the spreads (pages who should be side by side).",
-    "step3": "3. Arrange the spreads in the correct order.",
-    "step4": "4. Find the middle of the booklet and fold it in half.",
-    "step5": "5. Staple or bind the folded booklet."
+    "instructions1": "1. Print in both sides of the paper.",
+    "instructions2": "2. Cut the spreads (pages who should be side by side).",
+    "instructions3": "3. Arrange the spreads in the correct order.",
+    "instructions4": "4. Find the middle of the booklet and fold it in half.",
+    "instructions5": "5. Staple or bind the folded booklet."
   },
   "About": {
     "title": "About me",
