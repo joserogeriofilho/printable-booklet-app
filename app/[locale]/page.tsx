@@ -42,45 +42,35 @@ export default function Page() {
 
       <div className="grid gap-y-5 grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
         <IllustradedSection>
-          <IllustradedSection.Text>
-            1. Print in both sides of the paper.
-          </IllustradedSection.Text>
+          <IllustradedSection.Text>{t("step1")}</IllustradedSection.Text>
           <IllustradedSection.Media>
             <img src="/images/01-print.svg" />
           </IllustradedSection.Media>
         </IllustradedSection>
 
         <IllustradedSection>
-          <IllustradedSection.Text>
-            2. Cut the spreads (pages who should be side by side).
-          </IllustradedSection.Text>
+          <IllustradedSection.Text>{t("step2")}</IllustradedSection.Text>
           <IllustradedSection.Media>
             <img src="/images/02-cut.svg" />
           </IllustradedSection.Media>
         </IllustradedSection>
 
         <IllustradedSection>
-          <IllustradedSection.Text>
-            3. Arrange the spreads in the correct order.
-          </IllustradedSection.Text>
+          <IllustradedSection.Text>{t("step3")}</IllustradedSection.Text>
           <IllustradedSection.Media>
             <img src="/images/03-mount.svg" />
           </IllustradedSection.Media>
         </IllustradedSection>
 
         <IllustradedSection>
-          <IllustradedSection.Text>
-            4. Find the middle of the booklet and fold it in half.
-          </IllustradedSection.Text>
+          <IllustradedSection.Text>{t("step4")}</IllustradedSection.Text>
           <IllustradedSection.Media>
             <img src="/images/04-fold.svg" />
           </IllustradedSection.Media>
         </IllustradedSection>
 
         <IllustradedSection>
-          <IllustradedSection.Text>
-            5. Staple or bind the folded booklet.
-          </IllustradedSection.Text>
+          <IllustradedSection.Text>{t("step5")}</IllustradedSection.Text>
           <IllustradedSection.Media>
             <img src="/images/05-staple.svg" />
           </IllustradedSection.Media>

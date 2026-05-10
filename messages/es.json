@@ -20,7 +20,12 @@
     "step2": "2. Vista previa",
     "previewPlaceholder": "Vista previa próximamente",
     "step3": "3. Descargar",
-    "downloadPdf": "Descargar PDF"
+    "downloadPdf": "Descargar PDF",
+    "step1": "1. Imprima en ambos los lados del papel.",
+    "step2": "2. Corte las páginas del folleto.",
+    "step3": "3. Organice las páginas en el orden correcto.",
+    "step4": "4. Encuentre el medio del folleto y dóblelo por la mitad.",
+    "step5": "5. Grampee o encadene el folleto doblado."
   },
   "About": {
     "title": "Sobre mí",
