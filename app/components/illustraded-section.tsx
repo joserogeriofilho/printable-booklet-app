@@ -6,7 +6,9 @@ function Text({ children }: { children: React.ReactNode }) {
 
 function Media({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-stone-200 dark:bg-stone-600 rounded p-2">{children}</div>
+    <div className="bg-stone-200 dark:bg-stone-600 rounded p-2 mt-2">
+      {children}
+    </div>
   );
 }
 
