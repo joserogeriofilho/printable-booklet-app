@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import IllustradedSection from "../components/illustraded-section";
 import { getTotalPages, generatePdf } from "../domain";
 import type { BookletSize } from "../domain";
 
 const formFieldClasses =
-  "w-full max-w-xs px-4 py-2.5 text-sm border border-stone-300 dark:border-stone-600 rounded-sm bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100";
+  "w-full max-w-xs px-4 py-2.5 text-sm border border-stone-300 dark:border-stone-600 rounded bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100";
 
 const inputClasses = `${formFieldClasses} placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition`;
 
@@ -26,14 +27,65 @@ export default function Page() {
 
   return (
     <section>
-      <header className="mb-12">
+      <header className="mb-8">
         <h1 className="mb-3 text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-100">
           {t("title")}
         </h1>
-        <p className="text-sm text-stone-500 dark:text-stone-400 leading-relaxed max-w-md">
+        <p className="text-sm text-stone-500 dark:text-stone-400 leading-relaxed">
           {t("description")}
         </p>
       </header>
+
+      <h2 className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight">
+        Instructions
+      </h2>
+
+      <div className="grid gap-y-5 grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+        <IllustradedSection>
+          <IllustradedSection.Text>
+            1. Print in both sides of the paper.
+          </IllustradedSection.Text>
+          <IllustradedSection.Media>
+            <img src="/images/01-print.svg" />
+          </IllustradedSection.Media>
+        </IllustradedSection>
+
+        <IllustradedSection>
+          <IllustradedSection.Text>
+            2. Cut the spreads (pages who should be side by side).
+          </IllustradedSection.Text>
+          <IllustradedSection.Media>
+            <img src="/images/02-cut.svg" />
+          </IllustradedSection.Media>
+        </IllustradedSection>
+
+        <IllustradedSection>
+          <IllustradedSection.Text>
+            3. Arrange the spreads in the correct order.
+          </IllustradedSection.Text>
+          <IllustradedSection.Media>
+            <img src="/images/03-mount.svg" />
+          </IllustradedSection.Media>
+        </IllustradedSection>
+
+        <IllustradedSection>
+          <IllustradedSection.Text>
+            4. Find the middle of the booklet and fold it in half.
+          </IllustradedSection.Text>
+          <IllustradedSection.Media>
+            <img src="/images/04-fold.svg" />
+          </IllustradedSection.Media>
+        </IllustradedSection>
+
+        <IllustradedSection>
+          <IllustradedSection.Text>
+            5. Staple or bind the folded booklet.
+          </IllustradedSection.Text>
+          <IllustradedSection.Media>
+            <img src="/images/05-staple.svg" />
+          </IllustradedSection.Media>
+        </IllustradedSection>
+      </div>
 
       <div className="space-y-10">
         {/* Step 1: Setup */}
@@ -106,7 +158,7 @@ export default function Page() {
                 type="file"
                 id="images"
                 name="images"
-                className="w-full max-w-xs text-sm text-stone-500 dark:text-stone-400 file:mr-4 file:py-2.5 file:px-5 file:rounded-sm file:border-0 file:text-sm file:font-medium file:bg-stone-200 dark:file:bg-stone-700 file:text-stone-700 dark:file:text-stone-200 hover:file:bg-stone-300 dark:hover:file:bg-stone-600 file:cursor-pointer file:transition"
+                className="w-full max-w-xs text-sm text-stone-500 dark:text-stone-400 file:mr-4 file:py-2.5 file:px-5 file:rounded file:border-0 file:text-sm file:font-medium file:bg-stone-200 dark:file:bg-stone-700 file:text-stone-700 dark:file:text-stone-200 hover:file:bg-stone-300 dark:hover:file:bg-stone-600 file:cursor-pointer file:transition"
                 multiple
                 accept="image/*"
                 onChange={onChangeFiles}
@@ -128,7 +180,7 @@ export default function Page() {
           <h2 className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight">
             {t("step2")}
           </h2>
-          <div className="rounded-sm border border-dashed border-stone-300 dark:border-stone-600 bg-stone-100 dark:bg-stone-800/50 py-8 px-6 text-center">
+          <div className="rounded border border-dashed border-stone-300 dark:border-stone-600 bg-stone-100 dark:bg-stone-800/50 py-8 px-6 text-center">
             <p className="text-sm text-stone-400 dark:text-stone-500">
               {t("previewPlaceholder")}
             </p>
@@ -141,7 +193,7 @@ export default function Page() {
             {t("step3")}
           </h2>
           <button
-            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 rounded-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-stone-900 transition disabled:opacity-40 disabled:cursor-not-allowed"
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-stone-900 transition disabled:opacity-40 disabled:cursor-not-allowed"
             onClick={() => files && generatePdf(numberOfSheets, size, files)}
             disabled={!files || files.length < totalPages}
           >
