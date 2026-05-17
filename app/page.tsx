@@ -2,21 +2,14 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Script from "next/script";
 
-const localeMap: Record<string, string> = {
-  pt: "pt",
-  "pt-BR": "pt",
-  "pt-PT": "pt",
-  es: "es",
-  "es-ES": "es",
-  "es-MX": "es",
-  "es-AR": "es",
-};
+const supportedLocales = ["en", "pt", "es"];
 
 function detectLocale(): string {
   if (typeof navigator === "undefined") return "en";
-  const lang = navigator.language;
-  return localeMap[lang] || "en";
+  const locale = navigator.language?.substring(0, 2) || "en";
+  return supportedLocales.includes(locale) ? locale : "en";
 }
 
 export default function RootPage() {
