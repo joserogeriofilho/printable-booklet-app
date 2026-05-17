@@ -31,9 +31,15 @@ export default function Page() {
         <h1 className="mb-3 text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-100">
           {t("title")}
         </h1>
-        <p className="text-sm text-stone-500 dark:text-stone-400 leading-relaxed">
+        <p className="text-sm text-stone-500 dark:text-stone-400 leading-relaxed mb-5">
           {t("description")}
         </p>
+        <a
+          className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-stone-900 transition disabled:opacity-40 disabled:cursor-not-allowed"
+          href="#step1"
+        >
+          {t("tryItNow")}
+        </a>
       </header>
 
       <h2 className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight">
@@ -90,7 +96,10 @@ export default function Page() {
       <div className="space-y-10">
         {/* Step 1: Setup */}
         <section>
-          <h2 className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight">
+          <h2
+            id="step1"
+            className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight"
+          >
             {t("step1")}
           </h2>
 
