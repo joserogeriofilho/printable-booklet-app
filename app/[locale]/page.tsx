@@ -34,12 +34,27 @@ export default function Page() {
         <p className="text-sm text-stone-500 dark:text-stone-400 leading-relaxed mb-5">
           {t("description")}
         </p>
-        <a
-          className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-stone-900 transition disabled:opacity-40 disabled:cursor-not-allowed"
-          href="#step1"
-        >
-          {t("tryItNow")}
-        </a>
+        <div className="flex flex-row gap-4">
+          <a
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-stone-900 transition disabled:opacity-40 disabled:cursor-not-allowed"
+            href="#step1"
+          >
+            {t("tryItNow")}
+          </a>
+          <a
+            href="https://github.com/joserogeriofilho/printable-booklet-app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-4 py-2 bg-stone-800 text-stone-100 hover:bg-stone-600 dark:bg-stone-600 dark:text-stone-100 dark:hover:bg-stone-400 transition-colors duration-200 rounded"
+          >
+            <img
+              src="/images/github-logo.svg"
+              alt="GitHub"
+              className="w-5 h-5 mr-2"
+            />
+            Github
+          </a>
+        </div>
       </header>
 
       <h2 className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight">
@@ -201,28 +216,41 @@ export default function Page() {
           <h2 className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight">
             {t("step3")}
           </h2>
-          <button
-            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-stone-900 transition disabled:opacity-40 disabled:cursor-not-allowed"
-            onClick={() => files && generatePdf(numberOfSheets, size, files)}
-            disabled={!files || files.length < totalPages}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+          <div className="flex flex-wrap gap-4">
+            <button
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-stone-900 transition disabled:opacity-40 disabled:cursor-not-allowed"
+              onClick={() => files && generatePdf(numberOfSheets, size, files)}
+              disabled={!files || files.length < totalPages}
             >
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-            {t("downloadPdf")}
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              {t("downloadPdf")}
+            </button>
+            <a
+              href="https://www.buymeacoffee.com/roger.sama"
+              target="_blank"
+              className="inline-flex items-center bg-[#FFDD00] text-stone-900 hover:bg-[#f5d600] dark:bg-[#FFDD00] dark:text-stone-900 dark:hover:bg-[#f5d600] transition-colors duration-200 rounded"
+            >
+              <img
+                src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+                style={{ height: "36px" }}
+                alt="Buy Me a Coffee"
+              />
+            </a>
+          </div>
         </section>
       </div>
     </section>

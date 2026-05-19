@@ -37,7 +37,7 @@
     "description": "La página que buscas no existe."
   },
   "Footer": {
-    "site": "sitio",
+    "site": "GitHub",
     "copyright": "© {year} — Bajo licencia MIT"
   },
   "LocaleSwitcher": {

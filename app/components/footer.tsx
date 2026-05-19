@@ -29,7 +29,9 @@ export default function Footer() {
         <li>
           <Link
             className="flex items-center text-sm transition-all hover:text-stone-800 dark:hover:text-stone-200"
-            href="/"
+            href="https://github.com/joserogeriofilho/printable-booklet-app"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <ArrowIcon />
             <span className="ml-2 h-7">{t("site")}</span>
