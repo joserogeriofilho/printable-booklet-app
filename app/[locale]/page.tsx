@@ -21,6 +21,11 @@ export default function Page() {
 
   const totalPages = getTotalPages(numberOfSheets, size);
 
+  const isSheetsInvalid = numberOfSheets < 1 || numberOfSheets > 50;
+
+  const isDisabled =
+    files === null || files.length < totalPages || isSheetsInvalid;
+
   const onChangeFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFiles(e.target.files);
   };
@@ -158,12 +163,26 @@ export default function Page() {
                 max={50}
                 id="sheets"
                 name="sheets"
-                className={inputClasses}
-                value={numberOfSheets}
-                onChange={(e) =>
-                  setNumberOfSheets(parseInt(e.target.value) || 1)
-                }
+                className={`${inputClasses} ${
+                  isSheetsInvalid
+                    ? "!border-red-500 dark:!border-red-400 !ring-red-500"
+                    : ""
+                }`}
+                value={numberOfSheets || ""}
+                onChange={(e) => {
+                  const raw = parseInt(e.target.value);
+                  if (!isNaN(raw)) {
+                    setNumberOfSheets(Math.min(50, Math.max(1, raw)));
+                  } else {
+                    setNumberOfSheets(0);
+                  }
+                }}
               />
+              {isSheetsInvalid && (
+                <span className="text-xs text-red-600 dark:text-red-400 mt-1 block">
+                  {t("sheetsError")}
+                </span>
+              )}
             </div>
 
             <div>
@@ -220,10 +239,10 @@ export default function Page() {
             <button
               className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-stone-900 transition disabled:opacity-40 disabled:cursor-not-allowed"
               onClick={() => files && generatePdf(numberOfSheets, size, files)}
-              disabled={!files || files.length < totalPages}
+              disabled={isDisabled}
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
+                xmlns="http://www.w3.org/2000/s vg"
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"

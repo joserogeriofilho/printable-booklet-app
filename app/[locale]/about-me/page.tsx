@@ -13,7 +13,7 @@ export default function Page() {
         </h1>
         {t.rich("description", {
           p: (chunks) => (
-            <p className="text-sm text-stone-500 dark:text-stone-400 leading-relaxed max-w-md mb-2">
+            <p className="text text-stone-500 dark:text-stone-400 leading-relaxed max-w-md mb-2">
               {chunks}
             </p>
           ),

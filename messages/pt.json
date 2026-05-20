@@ -26,7 +26,8 @@
     "instructions3": "3. Organize as páginas na ordem correta.",
     "instructions4": "4. Encontre o meio do livreto e dobre-o pela metade.",
     "instructions5": "5. Grampeie ou encadeie o livreto dobrado.",
-    "tryItNow": "Experimenta agora"
+    "tryItNow": "Experimenta agora",
+    "sheetsError": "Escolha um número entre 1 e 50"
   },
   "About": {
     "title": "Sobre mim",

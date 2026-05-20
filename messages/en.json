@@ -26,7 +26,8 @@
     "instructions3": "3. Arrange the spreads in the correct order.",
     "instructions4": "4. Find the middle of the booklet and fold it in half.",
     "instructions5": "5. Staple or bind the folded booklet.",
-    "tryItNow": "Try it now"
+    "tryItNow": "Try it now",
+    "sheetsError": "Choose a number between 1 and 50"
   },
   "About": {
     "title": "About me",
