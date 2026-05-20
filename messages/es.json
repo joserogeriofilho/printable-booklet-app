@@ -40,7 +40,7 @@
   },
   "Footer": {
     "site": "GitHub",
-    "copyright": "© {year} — Bajo licencia MIT"
+    "copyright": "© {year} — Bajo licencia GPL-3.0"
   },
   "LocaleSwitcher": {
     "label": "Cambiar idioma"

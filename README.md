@@ -1,42 +1,58 @@
-# Portfolio Blog Starter
+# Printable Booklet
 
-This is a porfolio site template complete with a blog. Includes:
+A client-side web app that turns your images into a printable booklet. Fold, staple, and share your own zine.
 
-- MDX and Markdown support
-- Optimized for SEO (sitemap, robots, JSON-LD schema)
-- RSS Feed
-- Dynamic OG images
-- Syntax highlighting
-- Tailwind v4
-- Vercel Speed Insights / Web Analytics
-- Geist font
+## Description
 
-## Demo
+Printable Booklet is a browser-based tool that takes a batch of images and arranges them into a print-ready booklet layout. It handles the math of booklet imposition — spreading pages across double-sided sheets so that when you fold and staple, every page lands in the right place.
 
-https://portfolio-blog-starter.vercel.app
+**How it works:**
 
-## How to Use
+1. **Setup** — Pick your paper size (A4 or Letter), choose how many sheets you have, and upload your images. The order you select the images determines the page order in the final booklet.
+2. **Generate** — Hit _Download PDF_ and the app crunches the layout math, producing a single PDF with properly imposed pages ready for double-sided printing.
 
-You can choose from one of the following two methods to use this repository:
+The entire process happens in your browser — no images are ever uploaded to a server. The app is built as a static site so it can be run locally easily for private use. It supports English, Portuguese, and Spanish out of the box.
 
-### One-Click Deploy
+## Built With
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
+- [Next.js](https://nextjs.org/) — React framework, static export mode
+- [React 19](https://react.dev/) — UI library
+- [Tailwind CSS v4](https://tailwindcss.com/) — Utility-first CSS framework
+- [jsPDF](https://github.com/parallax/jsPDF) — Client-side PDF generation
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/blog&project-name=blog&repository-name=blog)
+## Getting Started
 
-### Clone and Deploy
+1. Clone the repo
+   ```bash
+   git clone https://github.com/joserogeriofilho/printable-booklet-app.git
+   ```
+2. Install dependencies
+   ```bash
+   pnpm install
+   ```
+3. Run the app in dev mode
+   ```bash
+   pnpm dev
+   ```
+4. Open http://localhost:3000 in your browser
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [pnpm](https://pnpm.io/installation) to bootstrap the example:
+## Roadmap
 
-```bash
-pnpm create next-app --example https://github.com/vercel/examples/tree/main/solutions/blog blog
-```
+- [x] First release with PDF generation
+- [ ] Advanced options allowing to crop images to fit page resolution
+- [ ] Preview of the pages
+- [ ] Allow to change the order of the pages in the preview
 
-Then, run Next.js in development mode:
+## Contact
 
-```bash
-pnpm dev
-```
+José Rogério Filho  
+[@joserogeriofilho](https://github.com/joserogeriofilho)
 
-Deploy it to the cloud with [Vercel](https://vercel.com/templates) ([Documentation](https://nextjs.org/docs/app/building-your-application/deploying)).
+## Version History
+
+- 0.1
+  - Initial Release
+
+## License
+
+This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) — see the [LICENSE](LICENSE) file for details.
