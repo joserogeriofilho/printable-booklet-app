@@ -36,7 +36,7 @@ export default function Page() {
         <h1 className="mb-3 text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-100">
           {t("title")}
         </h1>
-        <p className="text-sm text-stone-500 dark:text-stone-400 leading-relaxed mb-5">
+        <p className="text text-stone-500 dark:text-stone-400 leading-relaxed mb-5">
           {t("description")}
         </p>
         <div className="flex flex-row gap-4">
@@ -179,9 +179,9 @@ export default function Page() {
                 }}
               />
               {isSheetsInvalid && (
-                <span className="text-xs text-red-600 dark:text-red-400 mt-1 block">
+                <div className="text-xs text-red-600 dark:text-red-400 mt-2 block">
                   {t("sheetsError")}
-                </span>
+                </div>
               )}
             </div>
 
@@ -194,7 +194,9 @@ export default function Page() {
                   {t("imagesLabel")}
                 </label>
                 <span className="text-xs text-stone-400 dark:text-stone-500 font-mono">
-                  {totalPages} {t("neededSuffix")}
+                  {numberOfSheets > 0
+                    ? `${totalPages} ${t("neededSuffix")}`
+                    : t("sheetsRequired")}
                 </span>
               </div>
               <input
@@ -210,7 +212,7 @@ export default function Page() {
                 {t("imagesHint")}
               </p>
               {files && files.length < totalPages && (
-                <p className="text-sm text-red-600 dark:text-red-400 mt-2">
+                <p className="text-xs text-red-600 dark:text-red-400 mt-2">
                   {t("notEnoughFiles", { totalPages })}
                 </p>
               )}

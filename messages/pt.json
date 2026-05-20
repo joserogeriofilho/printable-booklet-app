@@ -27,11 +27,12 @@
     "instructions4": "4. Encontre o meio do livreto e dobre-o pela metade.",
     "instructions5": "5. Grampeie ou encadeie o livreto dobrado.",
     "tryItNow": "Experimenta agora",
-    "sheetsError": "Escolha um número entre 1 e 50"
+    "sheetsError": "Escolha um número entre 1 e 50",
+    "sheetsRequired": "Primeiro selecione o número de folhas"
   },
   "About": {
     "title": "Sobre mim",
-    "description": "Um lugar para escrever sobre você, seus zines e seus projetos."
+    "description": "<p>Olá! Espero que você tenha gostado de usar esta ferramenta tanto quanto eu gostei de criá-la. Sou desenvolvedor frontend com paixão por autopublicação, zines, arte, pixel art e várias outras coisas além da tecnologia. Também acho o open-source maneiro demais, uma espécie de atitude punk positiva diante das grandes empresas de tecnologia e da cultura de consumo em que a gente vive. Foi assim que nasceu este projeto que você está vendo agora.</p><p>Se quiser saber mais sobre mim, você pode me encontrar no <github>GitHub</github> ou no <linkedin>LinkedIn</linkedin>.</p>"
   },
   "NotFound": {
     "title": "404 - Página não encontrada",

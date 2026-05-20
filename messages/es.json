@@ -27,11 +27,12 @@
     "instructions4": "4. Encuentre el medio del folleto y dóblelo por la mitad.",
     "instructions5": "5. Grampee o encadene el folleto doblado.",
     "tryItNow": "Pruébalo ahora",
-    "sheetsError": "Elige un número entre 1 y 50"
+    "sheetsError": "Elige un número entre 1 y 50",
+    "sheetsRequired": "Primero selecciona el número de hojas"
   },
   "About": {
     "title": "Sobre mí",
-    "description": "Un lugar para escribir sobre ti, tus zines y tus proyectos."
+    "description": "<p>¡Hola! Espero que hayas disfrutado usando esta herramienta tanto como yo disfruté creándola. Soy desarrollador frontend con pasión por la autopublicación, los zines, el arte, el pixel art y muchas otras cosas más allá de la tecnología. También me parece que el open-source es increíble, una especie de actitud punk positiva frente a los gigantes tecnológicos y la cultura del consumo en la que vivimos. Así nació este proyecto que estás viendo.</p><p>Si quieres saber más sobre mí, puedes encontrarme en <github>GitHub</github> o <linkedin>LinkedIn</linkedin>.</p>"
   },
   "NotFound": {
     "title": "404 - Página no encontrada",
