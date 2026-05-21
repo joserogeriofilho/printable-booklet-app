@@ -4,12 +4,13 @@ A client-side web app that turns your images into a printable booklet. Fold, sta
 
 ## Description
 
-Printable Booklet is a browser-based tool that takes a batch of images and arranges them into a print-ready booklet layout. It handles the math of booklet imposition — spreading pages across double-sided sheets so that when you fold and staple, every page lands in the right place.
+Printable Booklet is a browser-based tool that takes a batch of images and arranges them into a print-ready booklet layout. It handles the math of positioning images across A4 sheets so you can print on both sides of the paper, cut, fold, and staple it all into a proper little book.
 
 **How it works:**
 
-1. **Setup** — Pick your paper size (A4 or Letter), choose how many sheets you have, and upload your images. The order you select the images determines the page order in the final booklet.
-2. **Generate** — Hit _Download PDF_ and the app crunches the layout math, producing a single PDF with properly imposed pages ready for double-sided printing.
+1. **Setup** — Pick your page size (A5, A6, A7 or A8), choose how many sheets you want and select your images.
+2. **Generate** — Hit _Download PDF_ button and download the final PDF.
+3. **Print and mount** - Print in both sides of the paper, cut the spreads, mount them and staple your booklet.
 
 The entire process happens in your browser — no images are ever uploaded to a server. The app is built as a static site so it can be run locally easily for private use. It supports English, Portuguese, and Spanish out of the box.
 
@@ -55,4 +56,4 @@ José Rogério Filho
 
 ## License
 
-This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) — see the [LICENSE](LICENSE.md) file for details.
