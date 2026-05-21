@@ -1,8 +1,24 @@
-# Printable Booklet
+<p align="center">
+  <a href="https://github.com/AykutSarac/jsoncrack.com">
+   <img src="./public/images/logo.png" height="50" alt="Logo">
+  </a>
 
-A client-side web app that turns your images into a printable booklet. Fold, staple, and share your own zine.
+  <h1 align="center">Printable Booklet</h1>
 
-## Description
+  <p align="center">
+    An open source web app that turns images into a printable booklet.
+    <br />
+    <a href="https://rogersama.com/printable-booklet"><strong>Try it online »</strong></a>
+    <br />
+    <br />
+  </p>
+</p>
+
+## About the project
+
+<img src="https://github.com/user-attachments/assets/d4d53cb7-410c-40e6-ab1d-bb09cb9a01b8" alt="Screenshot of the web app">
+
+<br />
 
 Printable Booklet is a browser-based tool that takes a batch of images and arranges them into a print-ready booklet layout. It handles the math of positioning images across A4 sheets so you can print on both sides of the paper, cut, fold, and staple it all into a proper little book.
 
@@ -44,10 +60,9 @@ The entire process happens in your browser — no images are ever uploaded to a 
 - [ ] Preview of the pages
 - [ ] Allow to change the order of the pages in the preview
 
-## Contact
+## The Author
 
-José Rogério Filho  
-[@joserogeriofilho](https://github.com/joserogeriofilho)
+[José Rogério Filho](https://github.com/joserogeriofilho)
 
 ## Version History
 
