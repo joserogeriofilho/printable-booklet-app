@@ -7,7 +7,7 @@ import { getTotalPages, generatePdf } from "../domain";
 import type { BookletSize } from "../domain";
 
 const formFieldClasses =
-  "w-full max-w-xs px-4 py-2.5 text-sm border border-stone-300 dark:border-stone-600 rounded bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100";
+  "w-full md:max-w-sm px-4 py-2.5 text-sm border border-stone-300 dark:border-stone-600 rounded bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100";
 
 const inputClasses = `${formFieldClasses} placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition`;
 
@@ -41,12 +41,6 @@ export default function Page() {
         </p>
         <div className="flex flex-row gap-4">
           <a
-            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-stone-900 transition disabled:opacity-40 disabled:cursor-not-allowed"
-            href="#step1"
-          >
-            {t("tryItNow")}
-          </a>
-          <a
             href="https://github.com/joserogeriofilho/printable-booklet-app"
             target="_blank"
             rel="noopener noreferrer"
@@ -59,59 +53,19 @@ export default function Page() {
             />
             Github
           </a>
+          <a
+            href="https://www.buymeacoffee.com/roger.sama"
+            target="_blank"
+            className="inline-flex items-center bg-[#FFDD00] text-stone-900 hover:bg-[#f5d600] dark:bg-[#FFDD00] dark:text-stone-900 dark:hover:bg-[#f5d600] transition-colors duration-200 rounded"
+          >
+            <img
+              src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+              style={{ height: "36px" }}
+              alt="Buy Me a Coffee"
+            />
+          </a>
         </div>
       </header>
-
-      <h2 className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight">
-        Instructions
-      </h2>
-
-      <div className="grid gap-y-5 grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
-        <IllustradedSection>
-          <IllustradedSection.Text>
-            {t("instructions1")}
-          </IllustradedSection.Text>
-          <IllustradedSection.Media>
-            <img src="/images/01-print.svg" />
-          </IllustradedSection.Media>
-        </IllustradedSection>
-
-        <IllustradedSection>
-          <IllustradedSection.Text>
-            {t("instructions2")}
-          </IllustradedSection.Text>
-          <IllustradedSection.Media>
-            <img src="/images/02-cut.svg" />
-          </IllustradedSection.Media>
-        </IllustradedSection>
-
-        <IllustradedSection>
-          <IllustradedSection.Text>
-            {t("instructions3")}
-          </IllustradedSection.Text>
-          <IllustradedSection.Media>
-            <img src="/images/03-mount.svg" />
-          </IllustradedSection.Media>
-        </IllustradedSection>
-
-        <IllustradedSection>
-          <IllustradedSection.Text>
-            {t("instructions4")}
-          </IllustradedSection.Text>
-          <IllustradedSection.Media>
-            <img src="/images/04-fold.svg" />
-          </IllustradedSection.Media>
-        </IllustradedSection>
-
-        <IllustradedSection>
-          <IllustradedSection.Text>
-            {t("instructions5")}
-          </IllustradedSection.Text>
-          <IllustradedSection.Media>
-            <img src="/images/05-staple.svg" />
-          </IllustradedSection.Media>
-        </IllustradedSection>
-      </div>
 
       <div className="space-y-10">
         {/* Step 1: Setup */}
@@ -203,12 +157,12 @@ export default function Page() {
                 type="file"
                 id="images"
                 name="images"
-                className="w-full max-w-xs text-sm text-stone-500 dark:text-stone-400 file:mr-4 file:py-2.5 file:px-5 file:rounded file:border-0 file:text-sm file:font-medium file:bg-stone-200 dark:file:bg-stone-700 file:text-stone-700 dark:file:text-stone-200 hover:file:bg-stone-300 dark:hover:file:bg-stone-600 file:cursor-pointer file:transition"
+                className="w-full md:max-w-sm text-sm text-stone-500 dark:text-stone-400 file:mr-4 file:py-2.5 file:px-5 file:rounded file:border-0 file:text-sm file:font-medium file:bg-stone-200 dark:file:bg-stone-700 file:text-stone-700 dark:file:text-stone-200 hover:file:bg-stone-300 dark:hover:file:bg-stone-600 file:cursor-pointer file:transition"
                 multiple
                 accept="image/*"
                 onChange={onChangeFiles}
               />
-              <p className="mt-2 text-xs text-stone-400 dark:text-stone-500 max-w-xs">
+              <p className="md:max-w-sm mt-2 text-xs text-stone-400 dark:text-stone-500">
                 {t("imagesHint")}
               </p>
               {files && files.length < totalPages && (
@@ -260,17 +214,60 @@ export default function Page() {
               </svg>
               {t("downloadPdf")}
             </button>
-            <a
-              href="https://www.buymeacoffee.com/roger.sama"
-              target="_blank"
-              className="inline-flex items-center bg-[#FFDD00] text-stone-900 hover:bg-[#f5d600] dark:bg-[#FFDD00] dark:text-stone-900 dark:hover:bg-[#f5d600] transition-colors duration-200 rounded"
-            >
-              <img
-                src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-                style={{ height: "36px" }}
-                alt="Buy Me a Coffee"
-              />
-            </a>
+          </div>
+        </section>
+
+        {/* Step 4: Mount */}
+        <section>
+          <h2 className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight">
+            {t("step4")}
+          </h2>
+
+          <div className="grid gap-y-5 grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+            <IllustradedSection>
+              <IllustradedSection.Text>
+                {t("instructions1")}
+              </IllustradedSection.Text>
+              <IllustradedSection.Media>
+                <img src="/images/01-print.svg" />
+              </IllustradedSection.Media>
+            </IllustradedSection>
+
+            <IllustradedSection>
+              <IllustradedSection.Text>
+                {t("instructions2")}
+              </IllustradedSection.Text>
+              <IllustradedSection.Media>
+                <img src="/images/02-cut.svg" />
+              </IllustradedSection.Media>
+            </IllustradedSection>
+
+            <IllustradedSection>
+              <IllustradedSection.Text>
+                {t("instructions3")}
+              </IllustradedSection.Text>
+              <IllustradedSection.Media>
+                <img src="/images/03-mount.svg" />
+              </IllustradedSection.Media>
+            </IllustradedSection>
+
+            <IllustradedSection>
+              <IllustradedSection.Text>
+                {t("instructions4")}
+              </IllustradedSection.Text>
+              <IllustradedSection.Media>
+                <img src="/images/04-fold.svg" />
+              </IllustradedSection.Media>
+            </IllustradedSection>
+
+            <IllustradedSection>
+              <IllustradedSection.Text>
+                {t("instructions5")}
+              </IllustradedSection.Text>
+              <IllustradedSection.Media>
+                <img src="/images/05-staple.svg" />
+              </IllustradedSection.Media>
+            </IllustradedSection>
           </div>
         </section>
       </div>
