@@ -1,8 +1,4 @@
 <p align="center">
-  <a href="https://github.com/AykutSarac/jsoncrack.com">
-   <img src="./public/images/logo.png" height="50" alt="Logo">
-  </a>
-
   <h1 align="center">Printable Booklet</h1>
 
   <p align="center">
@@ -16,28 +12,31 @@
 
 ## About the project
 
-<img src="https://github.com/user-attachments/assets/d4d53cb7-410c-40e6-ab1d-bb09cb9a01b8" alt="Screenshot of the web app">
+<img src="https://github.com/user-attachments/assets/6e8e40cc-7e31-4d8c-9d86-2531f7c0854b" alt="Screenshot of the web app">
 
 <br />
+<br />
 
-Printable Booklet is a browser-based tool that takes a batch of images and arranges them into a print-ready booklet layout. It handles the math of positioning images across A4 sheets so you can print on both sides of the paper, cut, fold, and staple it all into a proper little book.
+Printable Booklet is an web app that takes a batch of images and arranges them into a print-ready booklet layout. It handles the math of positioning images across A4 sheets so you can print on both sides of the paper, cut, fold, and staple it all into a proper little book.
 
 **How it works:**
 
-1. **Setup** — Pick your page size (A5, A6, A7 or A8), choose how many sheets you want and select your images.
-2. **Generate** — Hit _Download PDF_ button and download the final PDF.
+1. **Setup** — Pick your page size (A5, A6, A7 or A8), choose how many A4 sheets you want and select your images.
+2. **Generate** — Hit the download button and download the generated PDF file.
 3. **Print and mount** - Print in both sides of the paper, cut the spreads, mount them and staple your booklet.
 
-The entire process happens in your browser — no images are ever uploaded to a server. The app is built as a static site so it can be run locally easily for private use. It supports English, Portuguese, and Spanish out of the box.
+The entire process happens in your browser — no images are ever uploaded to a server. The entire app is built as a static website so it can be run locally easily for private use, no backend is necessary. It supports English, Portuguese, and Spanish languages.
 
-## Built With
+## Getting Started
+
+### Built With
 
 - [Next.js](https://nextjs.org/) — React framework, static export mode
 - [React 19](https://react.dev/) — UI library
 - [Tailwind CSS v4](https://tailwindcss.com/) — Utility-first CSS framework
 - [jsPDF](https://github.com/parallax/jsPDF) — Client-side PDF generation
 
-## Getting Started
+### Running Locally
 
 1. Clone the repo
    ```bash
@@ -63,11 +62,6 @@ The entire process happens in your browser — no images are ever uploaded to a 
 ## The Author
 
 [José Rogério Filho](https://github.com/joserogeriofilho)
-
-## Version History
-
-- 0.1
-  - Initial Release
 
 ## License
 
