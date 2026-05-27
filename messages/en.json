@@ -29,7 +29,10 @@
     "instructions5": "5. Staple or bind the folded booklet.",
     "tryItNow": "Try it now",
     "sheetsError": "Choose a number between 1 and 50",
-    "sheetsRequired": "First select the number of sheets"
+    "sheetsRequired": "First select the number of sheets",
+    "generating": "Generating PDF…",
+    "generatingProgress": "{current} of {total} images processed",
+    "generatingError": "Failed to generate PDF. Please check your images and try again."
   },
   "About": {
     "title": "About me",

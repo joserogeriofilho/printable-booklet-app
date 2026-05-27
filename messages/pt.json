@@ -29,7 +29,10 @@
     "instructions5": "5. Grampeie ou encadeie o livreto dobrado.",
     "tryItNow": "Experimenta agora",
     "sheetsError": "Escolha um número entre 1 e 50",
-    "sheetsRequired": "Primeiro selecione o número de folhas"
+    "sheetsRequired": "Primeiro selecione o número de folhas",
+    "generating": "Gerando PDF…",
+    "generatingProgress": "{current} de {total} imagens processadas",
+    "generatingError": "Falha ao gerar o PDF. Verifique suas imagens e tente novamente."
   },
   "About": {
     "title": "Sobre mim",

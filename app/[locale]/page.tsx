@@ -27,6 +27,10 @@ export default function Page() {
   const [size, setSize] = useState<BookletSize>("A5");
   const [files, setFiles] = useState<FileList | null>(null);
 
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [progress, setProgress] = useState({ current: 0, total: 0 });
+
   const totalPages = getTotalPages(numberOfSheets, size);
 
   const isSheetsInvalid = numberOfSheets < 1 || numberOfSheets > 50;
@@ -36,6 +40,21 @@ export default function Page() {
 
   const onChangeFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFiles(e.target.files);
+  };
+
+  const handleDownload = async () => {
+    if (!files) return;
+    setIsGenerating(true);
+    setError(null);
+    try {
+      await generatePdf(numberOfSheets, size, files, (current, total) => {
+        setProgress({ current, total });
+      });
+    } catch (e) {
+      setError(e instanceof Error ? e.message : t("generatingError"));
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   return (
@@ -199,30 +218,62 @@ export default function Page() {
           <h2 className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight">
             {t("step3")}
           </h2>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 items-center">
             <button
               className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-stone-900 transition disabled:opacity-40 disabled:cursor-not-allowed"
-              onClick={() => files && generatePdf(numberOfSheets, size, files)}
-              disabled={isDisabled}
+              onClick={handleDownload}
+              disabled={isDisabled || isGenerating}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                <line x1="12" y1="15" x2="12" y2="3" />
-              </svg>
-              {t("downloadPdf")}
+              {isGenerating ? (
+                <>
+                  <svg
+                    className="animate-spin"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <circle cx="12" cy="12" r="10" strokeDasharray="32" />
+                  </svg>
+                  {t("generating")}
+                </>
+              ) : (
+                <>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  {t("downloadPdf")}
+                </>
+              )}
             </button>
+            {isGenerating && progress.total > 0 && (
+              <span className="text-sm text-stone-500 dark:text-stone-400 font-mono">
+                {t("generatingProgress", {
+                  current: progress.current,
+                  total: progress.total,
+                })}
+              </span>
+            )}
           </div>
+          {error && (
+            <p className="mt-3 text-sm text-red-600 dark:text-red-400">
+              {error}
+            </p>
+          )}
         </section>
 
         {/* Step 4: Mount */}

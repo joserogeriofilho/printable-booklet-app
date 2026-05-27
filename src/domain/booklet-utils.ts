@@ -18,6 +18,8 @@ type Cell = {
   fileIndex: number;
 };
 
+export type ProgressCallback = (current: number, total: number) => void;
+
 const Configs = {
   A5: {
     cols: 2,
@@ -85,6 +87,7 @@ export const generatePdf = async (
   numberOfSheets: number,
   size: BookletSize,
   files: FileList,
+  onProgress?: ProgressCallback,
 ) => {
   const { layout } = generateLayout(numberOfSheets, size);
 
@@ -104,13 +107,21 @@ export const generatePdf = async (
 
   const rows = Configs[size].rows;
   const cols = Configs[size].cols;
+  const totalCells = numberOfSheets * 2 * rows * cols;
+  let processed = 0;
 
   for (let page = 0; page < numberOfSheets * 2; page++) {
     const cells: Cell[] = [];
 
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
-        cells.push({ row, col, fileIndex: layout[page][row][col] - 1 });
+        const fileIndex = layout[page][row][col] - 1;
+        if (!files[fileIndex]) {
+          throw new Error(
+            `Missing image for page ${page + 1}, row ${row + 1}, col ${col + 1}`,
+          );
+        }
+        cells.push({ row, col, fileIndex });
       }
     }
 
@@ -121,7 +132,11 @@ export const generatePdf = async (
           files[fileIndex],
           bookletPageWidth,
           bookletPageHeight,
-        ).then((imgBase64) => ({ row, col, imgBase64 })),
+        ).then((imgBase64) => {
+          processed++;
+          onProgress?.(processed, totalCells);
+          return { row, col, imgBase64 };
+        }),
       ),
     );
 

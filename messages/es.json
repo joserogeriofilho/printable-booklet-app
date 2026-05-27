@@ -29,7 +29,10 @@
     "instructions5": "5. Grampee o encadene el folleto doblado.",
     "tryItNow": "Pruébalo ahora",
     "sheetsError": "Elige un número entre 1 y 50",
-    "sheetsRequired": "Primero selecciona el número de hojas"
+    "sheetsRequired": "Primero selecciona el número de hojas",
+    "generating": "Generando PDF…",
+    "generatingProgress": "{current} de {total} imágenes procesadas",
+    "generatingError": "Error al generar el PDF. Verifica tus imágenes e inténtalo de nuevo."
   },
   "About": {
     "title": "Sobre mí",
