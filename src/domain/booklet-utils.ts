@@ -12,6 +12,12 @@ export const Sizes = {
 
 export type BookletSize = keyof typeof Sizes;
 
+type Cell = {
+  row: number;
+  col: number;
+  fileIndex: number;
+};
+
 const Configs = {
   A5: {
     cols: 2,
@@ -96,25 +102,39 @@ export const generatePdf = async (
     format: "a4",
   });
 
-  // Add image for each cell in the layout
-  for (let page = 0; page < numberOfSheets * 2; page++) {
-    for (let row = 0; row < Configs[size].rows; row++) {
-      for (let col = 0; col < Configs[size].cols; col++) {
-        const imgBase64 = await processImage(
-          files[layout[page][row][col] - 1],
-          bookletPageWidth,
-          bookletPageHeight,
-        );
+  const rows = Configs[size].rows;
+  const cols = Configs[size].cols;
 
-        doc.addImage(
-          imgBase64 as string,
-          "JPEG",
-          col * bookletPageWidth,
-          row * bookletPageHeight,
+  for (let page = 0; page < numberOfSheets * 2; page++) {
+    const cells: Cell[] = [];
+
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        cells.push({ row, col, fileIndex: layout[page][row][col] - 1 });
+      }
+    }
+
+    // Process all images for this page in parallel
+    const results = await Promise.all(
+      cells.map(({ row, col, fileIndex }) =>
+        processImage(
+          files[fileIndex],
           bookletPageWidth,
           bookletPageHeight,
-        );
-      }
+        ).then((imgBase64) => ({ row, col, imgBase64 })),
+      ),
+    );
+
+    // Place images on the page
+    for (const { row, col, imgBase64 } of results) {
+      doc.addImage(
+        imgBase64 as string,
+        "JPEG",
+        col * bookletPageWidth,
+        row * bookletPageHeight,
+        bookletPageWidth,
+        bookletPageHeight,
+      );
     }
 
     if (page < numberOfSheets * 2 - 1) {
