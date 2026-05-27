@@ -1,4 +1,3 @@
-import { jsPDF } from "jspdf";
 import { processImage } from "./image-processor";
 
 const A4_WIDTH = 210; // 210 mm
@@ -90,6 +89,7 @@ export const generatePdf = async (
     ? A4_HEIGHT / Configs[size].rows
     : A4_WIDTH / Configs[size].rows;
 
+  const { jsPDF } = await import("jspdf");
   const doc = new jsPDF({
     orientation: Configs[size].portrait ? "portrait" : "landscape",
     unit: "mm",
