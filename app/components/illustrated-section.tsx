@@ -12,7 +12,7 @@ function Media({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function IllustradedSection({
+export default function IllustratedSection({
   children,
 }: {
   children: React.ReactNode;
@@ -20,5 +20,5 @@ export default function IllustradedSection({
   return <div className="flex flex-col justify-between">{children}</div>;
 }
 
-IllustradedSection.Text = Text;
-IllustradedSection.Media = Media;
+IllustratedSection.Text = Text;
+IllustratedSection.Media = Media;

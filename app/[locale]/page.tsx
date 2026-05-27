@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import IllustradedSection from "../components/illustraded-section";
+import IllustratedSection from "../components/illustrated-section";
 import { getTotalPages, generatePdf } from "../domain";
 import type { BookletSize } from "../domain";
 
@@ -12,6 +12,14 @@ const formFieldClasses =
 const inputClasses = `${formFieldClasses} placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition`;
 
 const selectClasses = `${formFieldClasses} focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition`;
+
+const instructions = [
+  { key: "instructions1", img: "/images/01-print.svg" },
+  { key: "instructions2", img: "/images/02-cut.svg" },
+  { key: "instructions3", img: "/images/03-mount.svg" },
+  { key: "instructions4", img: "/images/04-fold.svg" },
+  { key: "instructions5", img: "/images/05-staple.svg" },
+];
 
 export default function Page() {
   const t = useTranslations("Home");
@@ -198,7 +206,7 @@ export default function Page() {
               disabled={isDisabled}
             >
               <svg
-                xmlns="http://www.w3.org/2000/s vg"
+                xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
@@ -224,50 +232,14 @@ export default function Page() {
           </h2>
 
           <div className="grid gap-y-5 grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
-            <IllustradedSection>
-              <IllustradedSection.Text>
-                {t("instructions1")}
-              </IllustradedSection.Text>
-              <IllustradedSection.Media>
-                <img src="/images/01-print.svg" />
-              </IllustradedSection.Media>
-            </IllustradedSection>
-
-            <IllustradedSection>
-              <IllustradedSection.Text>
-                {t("instructions2")}
-              </IllustradedSection.Text>
-              <IllustradedSection.Media>
-                <img src="/images/02-cut.svg" />
-              </IllustradedSection.Media>
-            </IllustradedSection>
-
-            <IllustradedSection>
-              <IllustradedSection.Text>
-                {t("instructions3")}
-              </IllustradedSection.Text>
-              <IllustradedSection.Media>
-                <img src="/images/03-mount.svg" />
-              </IllustradedSection.Media>
-            </IllustradedSection>
-
-            <IllustradedSection>
-              <IllustradedSection.Text>
-                {t("instructions4")}
-              </IllustradedSection.Text>
-              <IllustradedSection.Media>
-                <img src="/images/04-fold.svg" />
-              </IllustradedSection.Media>
-            </IllustradedSection>
-
-            <IllustradedSection>
-              <IllustradedSection.Text>
-                {t("instructions5")}
-              </IllustradedSection.Text>
-              <IllustradedSection.Media>
-                <img src="/images/05-staple.svg" />
-              </IllustradedSection.Media>
-            </IllustradedSection>
+            {instructions.map(({ key, img }) => (
+              <IllustratedSection key={key}>
+                <IllustratedSection.Text>{t(key)}</IllustratedSection.Text>
+                <IllustratedSection.Media>
+                  <img src={img} />
+                </IllustratedSection.Media>
+              </IllustratedSection>
+            ))}
           </div>
         </section>
       </div>
