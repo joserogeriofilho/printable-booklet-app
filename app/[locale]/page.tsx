@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import IllustratedSection from "../components/illustrated-section";
-import { getTotalPages, generatePdf } from "../domain";
-import type { BookletSize } from "../domain";
+import { getTotalPages, generatePdf } from "../../src/domain";
+import type { BookletSize } from "../../src/domain";
 
 const formFieldClasses =
   "w-full md:max-w-sm px-4 py-2.5 text-sm border border-stone-300 dark:border-stone-600 rounded bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100";
