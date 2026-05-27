@@ -1,6 +1,7 @@
 import { routing } from "../src/i18n/routing";
 
-export const baseUrl = "https://portfolio-blog-starter.vercel.app";
+const DEFAULT_BASE_URL = "https://printable-booklet.vercel.app";
+export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || DEFAULT_BASE_URL;
 
 export const dynamic = "force-static";
 
