@@ -14,7 +14,7 @@ Run tests for a single file: `pnpm test -- path/to/file.test.ts`
 
 ## Architecture
 
-- **`app/domain/`** — Core business logic: booklet layout math and PDF generation (jsPDF). This is the engine. Changes here affect the whole app.
+- **`src/domain/`** — Core business logic: booklet layout math and PDF generation (jsPDF). This is the engine. Changes here affect the whole app.
 - **`app/page.tsx`** — Single page UI (client component). Form-driven: sheets, size, images → generates and downloads PDF.
 - **Static export only** (`next.config.js`: `output: "export"`). No SSR, no API routes, no middleware, no server components with runtime logic. `next build` produces `out/`.
 
@@ -25,4 +25,8 @@ Run tests for a single file: `pnpm test -- path/to/file.test.ts`
 - **TypeScript**: `"strict": false`, but `"strictNullChecks": true`.
 - **`trailingSlash: true`** is set — all routes end with `/`.
 - **Images are unoptimized** — required for static export.
-- **`app/sitemap.ts`** has a hardcoded `baseUrl` (`https://portfolio-blog-starter.vercel.app`) leftover from the template. Update it for production.
+
+## Rules
+
+- Always run `pnpm test` after implementing changes to the code;
+- Always check if documentation (AGENTS.md, README.md, /docs/\*) needs to be updated afer a change in the code;
