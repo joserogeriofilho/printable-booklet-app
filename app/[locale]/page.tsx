@@ -138,27 +138,53 @@ export default function Page() {
                   {t("sheetsRange")}
                 </span>
               </div>
-              <input
-                type="number"
-                min={1}
-                max={50}
-                id="sheets"
-                name="sheets"
-                className={`${inputClasses} ${
-                  isSheetsInvalid
-                    ? "!border-red-500 dark:!border-red-400 !ring-red-500"
-                    : ""
-                }`}
-                value={numberOfSheets || ""}
-                onChange={(e) => {
-                  const raw = parseInt(e.target.value);
-                  if (!isNaN(raw)) {
-                    setNumberOfSheets(Math.min(50, Math.max(1, raw)));
-                  } else {
-                    setNumberOfSheets(0);
-                  }
-                }}
-              />
+              <div className="flex w-full md:max-w-sm">
+                <button
+                  onClick={() => {
+                    if (numberOfSheets > 1) {
+                      setNumberOfSheets(numberOfSheets - 1);
+                    }
+                  }}
+                  disabled={numberOfSheets <= 1}
+                  aria-label={t("decreaseSheets")}
+                  className="px-4 py-2.5 text-lg font-medium border border-r-0 border-stone-300 dark:border-stone-600 rounded-l bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-700 active:bg-stone-200 dark:active:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:z-10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-200 select-none leading-none min-w-[44px]"
+                >
+                  -
+                </button>
+                <input
+                  type="number"
+                  min={1}
+                  max={50}
+                  id="sheets"
+                  name="sheets"
+                  className={`${inputClasses} rounded-none text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
+                    isSheetsInvalid
+                      ? "!border-red-500 dark:!border-red-400 !ring-red-500"
+                      : ""
+                  }`}
+                  value={numberOfSheets || ""}
+                  onChange={(e) => {
+                    const raw = parseInt(e.target.value);
+                    if (!isNaN(raw)) {
+                      setNumberOfSheets(Math.min(50, Math.max(1, raw)));
+                    } else {
+                      setNumberOfSheets(0);
+                    }
+                  }}
+                />
+                <button
+                  onClick={() => {
+                    if (numberOfSheets < 50) {
+                      setNumberOfSheets(numberOfSheets + 1);
+                    }
+                  }}
+                  disabled={numberOfSheets >= 50}
+                  aria-label={t("increaseSheets")}
+                  className="px-4 py-2.5 text-lg font-medium border border-l-0 border-stone-300 dark:border-stone-600 rounded-r bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-700 active:bg-stone-200 dark:active:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:z-10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-200 select-none leading-none min-w-[44px]"
+                >
+                  +
+                </button>
+              </div>
               {isSheetsInvalid && (
                 <div className="text-xs text-red-600 dark:text-red-400 mt-2 block">
                   {t("sheetsError")}

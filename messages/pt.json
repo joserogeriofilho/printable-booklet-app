@@ -28,6 +28,8 @@
     "instructions4": "4. Encontre o meio do livreto e dobre-o pela metade.",
     "instructions5": "5. Grampeie ou encaderne o livreto dobrado.",
     "tryItNow": "Experimente agora",
+    "decreaseSheets": "Diminuir número de folhas",
+    "increaseSheets": "Aumentar número de folhas",
     "sheetsError": "Escolha um número entre 1 e 50",
     "sheetsRequired": "Primeiro selecione o número de folhas",
     "generating": "Gerando PDF…",

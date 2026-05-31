@@ -28,6 +28,8 @@
     "instructions4": "4. Encuentre el medio del folleto y dóblelo por la mitad.",
     "instructions5": "5. Grape o encuaderne el folleto doblado.",
     "tryItNow": "Pruébalo ahora",
+    "decreaseSheets": "Disminuir número de hojas",
+    "increaseSheets": "Aumentar número de hojas",
     "sheetsError": "Elige un número entre 1 y 50",
     "sheetsRequired": "Primero selecciona el número de hojas",
     "generating": "Generando PDF…",

@@ -135,7 +135,3 @@ table {
 .title {
   text-wrap: balance;
 }
-
-h2 {
-  @apply border-b border-dashed border-stone-300 dark:border-stone-600 pb-3;
-}

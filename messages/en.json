@@ -28,6 +28,8 @@
     "instructions4": "4. Find the middle of the booklet and fold it in half.",
     "instructions5": "5. Staple or bind the folded booklet.",
     "tryItNow": "Try it now",
+    "decreaseSheets": "Decrease number of sheets",
+    "increaseSheets": "Increase number of sheets",
     "sheetsError": "Choose a number between 1 and 50",
     "sheetsRequired": "First select the number of sheets",
     "generating": "Generating PDF…",
