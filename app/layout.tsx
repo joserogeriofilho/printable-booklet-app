@@ -1,8 +1,13 @@
 import "./global.css";
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+import { Special_Elite } from "next/font/google";
 import { baseUrl } from "./sitemap";
+
+const specialElite = Special_Elite({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-special-elite",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -43,9 +48,8 @@ export default function RootLayout({
     <html
       lang="en"
       className={cx(
-        "text-stone-900 bg-stone-50 dark:text-stone-100 dark:bg-stone-950 font-[family-name:var(--font-geist-sans)]",
-        GeistSans.variable,
-        GeistMono.variable,
+        "text-stone-900 bg-stone-50 dark:text-stone-100 dark:bg-stone-950 font-[family-name:var(--font-special-elite)]",
+        specialElite.variable,
       )}
     >
       <body className="antialiased max-w-4xl mt-8 mx-auto">
