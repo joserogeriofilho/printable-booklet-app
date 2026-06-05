@@ -6,11 +6,15 @@
 pnpm dev       # Next.js dev server
 pnpm build     # static export → out/
 pnpm start     # serve the static export
-pnpm test      # Vitest with jsdom
+pnpm test      # Vitest with jsdom (single run)
+pnpm test:watch  # Vitest in watch mode
+pnpm lint      # ESLint with eslint-config-next
 ```
 
 Run a single test: `pnpm test -- -t "pattern"`  
 Run tests for a single file: `pnpm test -- path/to/file.test.ts`
+
+Node.js version: `.nvmrc` pins to **22**.
 
 ## Architecture
 
@@ -25,6 +29,7 @@ Run tests for a single file: `pnpm test -- path/to/file.test.ts`
 - **TypeScript**: `"strict": false`, but `"strictNullChecks": true`.
 - **`trailingSlash: true`** is set — all routes end with `/`.
 - **Images are unoptimized** — required for static export.
+- **Next.js 16 dropped `next lint`** — ESLint is configured manually via `eslint.config.js` with `eslint-config-next`.
 
 ## Rules
 
