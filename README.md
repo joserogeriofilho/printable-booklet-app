@@ -4,7 +4,7 @@
   <p align="center">
     An open source web app that turns images into a printable booklet.
     <br />
-    <a href="https://rogersama.com/printable-booklet"><strong>Try it online »</strong></a>
+    <a href="www.booklet.rogersama.com"><strong>Try it online »</strong></a>
     <br />
     <br />
   </p>
