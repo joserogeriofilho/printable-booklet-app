@@ -1,2 +1,24 @@
-pnpm lint
-pnpm test
+#!/usr/bin/env sh
+
+OUTPUT=$(mktemp)
+trap 'rm -f "$OUTPUT"' EXIT
+
+printf "Linting... "
+if pnpm lint > "$OUTPUT" 2>&1; then
+  printf "OK\n"
+else
+  printf "FAILED\n"
+  cat "$OUTPUT"
+  exit 1
+fi
+
+printf "Testing... "
+if pnpm test > "$OUTPUT" 2>&1; then
+  printf "OK\n"
+else
+  printf "FAILED\n"
+  cat "$OUTPUT"
+  exit 1
+fi
+
+printf "All checks passed.\n"
