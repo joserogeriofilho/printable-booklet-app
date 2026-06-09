@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+  if [ "$remote_ref" = "refs/heads/develop" ]; then
+    if [ "$remote_sha" = "0000000000000000000000000000000000000000" ]; then
+      NEW_COMMITS=$(git rev-list --count "$local_sha")
+    else
+      NEW_COMMITS=$(git rev-list --count "$remote_sha..$local_sha")
+    fi
+    if [ "$NEW_COMMITS" -gt 0 ]; then
+      printf "\n"
+      printf "Pushing %d commit(s) to develop. Create a PR to merge into main:\n" "$NEW_COMMITS"
+      printf "https://github.com/joserogeriofilho/printable-booklet-app/compare/main...develop?expand=1\n"
+      printf "\n"
+    fi
+    break
+  fi
+done

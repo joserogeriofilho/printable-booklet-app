@@ -11,7 +11,7 @@ const formFieldClasses =
 
 const inputClasses = `${formFieldClasses} placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition`;
 
-const selectClasses = `${formFieldClasses} focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition`;
+const selectClasses = `${formFieldClasses} pr-10 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition`;
 
 const instructions = [
   { key: "instructions1", img: "/images/01-print.svg" },
