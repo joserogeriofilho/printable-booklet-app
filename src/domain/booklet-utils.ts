@@ -86,7 +86,7 @@ export const generateLayout = (numberOfSheets: number, size: BookletSize) => {
 export const generatePdf = async (
   numberOfSheets: number,
   size: BookletSize,
-  files: FileList,
+  files: File[],
   onProgress?: ProgressCallback,
 ) => {
   const { layout } = generateLayout(numberOfSheets, size);

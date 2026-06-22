@@ -26,7 +26,7 @@ export default function Page() {
   const t = useTranslations("Home");
   const [numberOfSheets, setNumberOfSheets] = useState(1);
   const [size, setSize] = useState<BookletSize>("A5");
-  const [files, setFiles] = useState<FileList | null>(null);
+  const [files, setFiles] = useState<File[] | null>(null);
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -40,7 +40,12 @@ export default function Page() {
     files === null || files.length < totalPages || isSheetsInvalid;
 
   const onChangeFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFiles(e.target.files);
+    const fileList = e.target.files;
+    setFiles(fileList ? Array.from(fileList) : null);
+  };
+
+  const handleReorder = (newOrder: File[]) => {
+    setFiles(newOrder);
   };
 
   const handleDownload = async () => {
@@ -233,7 +238,7 @@ export default function Page() {
           <h2 className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight">
             {t("step2")}
           </h2>
-          <BookletPreview files={files} totalPages={totalPages} />
+          <BookletPreview files={files} totalPages={totalPages} onReorder={handleReorder} />
         </section>
 
         {/* Step 3: Download */}
