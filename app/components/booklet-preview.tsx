@@ -62,13 +62,13 @@ export default function BookletPreview({
       const base = changedFlag ? new Map() : prev;
       const next = new Map(base);
 
-      for (const [idx, url] of base) {
+      base.forEach((url, idx) => {
         if (idx < start || idx >= end) {
           URL.revokeObjectURL(url);
           allUrlsRef.current.delete(url);
           next.delete(idx);
         }
-      }
+      });
 
       for (let i = start; i < Math.min(end, maxIndex); i++) {
         if (!next.has(i)) {

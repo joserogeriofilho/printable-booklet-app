@@ -9,6 +9,7 @@ pnpm start     # serve the static export
 pnpm test      # Vitest with jsdom (single run)
 pnpm test:watch  # Vitest in watch mode
 pnpm lint      # ESLint with eslint-config-next
+pnpm typecheck  # TypeScript type checking (tsc --noEmit)
 ```
 
 Run a single test: `pnpm test -- -t "pattern"`  

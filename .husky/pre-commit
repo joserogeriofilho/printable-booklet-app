@@ -12,6 +12,15 @@ else
   exit 1
 fi
 
+printf "Type checking... "
+if pnpm typecheck > "$OUTPUT" 2>&1; then
+  printf "OK\n"
+else
+  printf "FAILED\n"
+  cat "$OUTPUT"
+  exit 1
+fi
+
 printf "Testing... "
 if pnpm test > "$OUTPUT" 2>&1; then
   printf "OK\n"
