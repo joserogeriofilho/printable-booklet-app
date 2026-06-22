@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import IllustratedSection from "../components/illustrated-section";
+import BookletPreview from "../components/booklet-preview";
 import { getTotalPages, generatePdf } from "../../src/domain/booklet-utils";
 import type { BookletSize } from "../../src/domain/booklet-utils";
 
@@ -232,11 +233,7 @@ export default function Page() {
           <h2 className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight">
             {t("step2")}
           </h2>
-          <div className="rounded border border-dashed border-stone-300 dark:border-stone-600 bg-stone-100 dark:bg-stone-800/50 py-8 px-6 text-center">
-            <p className="text-sm text-stone-400 dark:text-stone-500">
-              {t("previewPlaceholder")}
-            </p>
-          </div>
+          <BookletPreview files={files} totalPages={totalPages} />
         </section>
 
         {/* Step 3: Download */}
