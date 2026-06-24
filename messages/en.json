@@ -13,7 +13,7 @@
     "sheetsLabel": "Number of A4 sheets",
     "sheetsRange": "1 – 50",
     "sizeLabel": "Booklet's size",
-    "imagesLabel": "Booklet pages (images)",
+    "imagesLabel": "Booklet content (images as pages)",
     "neededSuffix": "needed",
     "imagesHint": "The order you select the images determines the page order.",
     "notEnoughFiles": "You must select at least {totalPages} images.",

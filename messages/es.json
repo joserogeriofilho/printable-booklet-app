@@ -13,7 +13,7 @@
     "sheetsLabel": "Número de hojas A4",
     "sheetsRange": "1 – 50",
     "sizeLabel": "Tamaño del folleto",
-    "imagesLabel": "Páginas del folleto (imágenes)",
+    "imagesLabel": "Contenido del folleto (imágenes como páginas)",
     "neededSuffix": "necesarias",
     "imagesHint": "El orden en que seleccionas las imágenes determina el orden de las páginas.",
     "notEnoughFiles": "Debes seleccionar al menos {totalPages} imágenes.",

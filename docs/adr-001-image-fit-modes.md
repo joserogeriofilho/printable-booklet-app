@@ -69,11 +69,14 @@ optional props and maps them to CSS:
 - `cover` → `object-cover`
 - `contain` → `object-contain` + inline `backgroundColor` on the card container
 
-### UI form (`app/[locale]/page.tsx`)
+### UI form (`app/[locale]/page.tsx` + `app/components/fit-mode-selector.tsx`)
 
-Two new state hooks (`fitMode`, `bgColor`) drive a `<select>` and a conditional
-colour input (colour picker + hex text) inside Step 1. The values are passed to
-both `<BookletPreview>` and `generatePdf()`.
+Two new state hooks (`fitMode`, `bgColor`) drive a `FitModeSelector` component
+inside Step 1. The component renders three radio-button cards arranged in a
+compact horizontal row, each containing an inline SVG illustration of the
+corresponding fit mode (page outline + photo content shape). A conditional
+colour input (colour picker + hex text) appears only when `contain` is selected.
+The values are passed to both `<BookletPreview>` and `generatePdf()`.
 
 ### Internationalisation
 

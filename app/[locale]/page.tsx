@@ -6,7 +6,7 @@ import IllustratedSection from "../components/illustrated-section";
 import BookletPreview from "../components/booklet-preview";
 import { getTotalPages, generatePdf } from "../../src/domain/booklet-utils";
 import type { BookletSize, FitMode } from "../../src/domain/booklet-utils";
-import { FitModes } from "../../src/domain/booklet-utils";
+import FitModeSelector from "../components/fit-mode-selector";
 
 const formFieldClasses =
   "w-full md:max-w-sm px-4 py-2.5 text-sm border border-stone-300 dark:border-stone-600 rounded bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100";
@@ -209,63 +209,6 @@ export default function Page() {
             </div>
 
             <div>
-              <label
-                htmlFor="fitMode"
-                className="block mb-2 text-sm font-medium text-stone-700 dark:text-stone-300"
-              >
-                {t("fitModeLabel")}
-              </label>
-              <select
-                id="fitMode"
-                name="fitMode"
-                className={selectClasses}
-                value={fitMode}
-                onChange={(e) =>
-                  setFitMode(e.target.value as FitMode)
-                }
-              >
-                <option value={FitModes.STRETCH}>
-                  {t("fitModeStretch")}
-                </option>
-                <option value={FitModes.COVER}>
-                  {t("fitModeCover")}
-                </option>
-                <option value={FitModes.CONTAIN}>
-                  {t("fitModeContain")}
-                </option>
-              </select>
-            </div>
-
-            {fitMode === "contain" && (
-              <div>
-                <label
-                  htmlFor="bgColor"
-                  className="block mb-2 text-sm font-medium text-stone-700 dark:text-stone-300"
-                >
-                  {t("bgColorLabel")}
-                </label>
-                <div className="flex items-center gap-2">
-                  <input
-                    type="color"
-                    id="bgColor"
-                    name="bgColor"
-                    className="w-10 h-10 rounded border border-stone-300 dark:border-stone-600 cursor-pointer bg-white dark:bg-stone-800 p-0.5"
-                    value={bgColor}
-                    onChange={(e) => setBgColor(e.target.value)}
-                  />
-                  <input
-                    type="text"
-                    className={inputClasses}
-                    value={bgColor}
-                    onChange={(e) => setBgColor(e.target.value)}
-                    placeholder="#ffffff"
-                    maxLength={7}
-                  />
-                </div>
-              </div>
-            )}
-
-            <div>
               <div className="flex items-center gap-2 mb-2">
                 <label
                   htmlFor="images"
@@ -297,6 +240,41 @@ export default function Page() {
                 </p>
               )}
             </div>
+
+            <FitModeSelector
+              value={fitMode}
+              onChange={setFitMode}
+            />
+
+            {fitMode === "contain" && (
+              <div>
+                <label
+                  htmlFor="bgColor"
+                  className="block mb-2 text-sm font-medium text-stone-700 dark:text-stone-300"
+                >
+                  {t("bgColorLabel")}
+                </label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="color"
+                    id="bgColor"
+                    name="bgColor"
+                    className="w-10 h-10 rounded border border-stone-300 dark:border-stone-600 cursor-pointer bg-white dark:bg-stone-800 p-0.5"
+                    value={bgColor}
+                    onChange={(e) => setBgColor(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    className={inputClasses}
+                    value={bgColor}
+                    onChange={(e) => setBgColor(e.target.value)}
+                    placeholder="#ffffff"
+                    maxLength={7}
+                  />
+                </div>
+              </div>
+            )}
+
           </div>
         </section>
 

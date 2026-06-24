@@ -13,7 +13,7 @@
     "sheetsLabel": "Número de folhas A4",
     "sheetsRange": "1 – 50",
     "sizeLabel": "Tamanho do livreto",
-    "imagesLabel": "Páginas do livreto (imagens)",
+    "imagesLabel": "Conteúdo do livreto (imagens como páginas)",
     "neededSuffix": "necessárias",
     "imagesHint": "A ordem em que você seleciona as imagens determina a ordem das páginas.",
     "notEnoughFiles": "Você deve selecionar pelo menos {totalPages} imagens.",
