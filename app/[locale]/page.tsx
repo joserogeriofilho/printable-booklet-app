@@ -238,7 +238,14 @@ export default function Page() {
           <h2 className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight">
             {t("step2")}
           </h2>
-          <BookletPreview files={files} totalPages={totalPages} onReorder={handleReorder} />
+          <p className="mb-4 text-xs text-stone-400 dark:text-stone-500">
+            {t("previewHelp")}
+          </p>
+          <BookletPreview
+            files={files}
+            totalPages={totalPages}
+            onReorder={handleReorder}
+          />
         </section>
 
         {/* Step 3: Download */}

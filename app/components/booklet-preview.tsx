@@ -27,6 +27,9 @@ export default function BookletPreview({
   const prevFilesRef = useRef(files);
   const [dragIndex, setDragIndex] = useState<number | null>(null);
   const [overIndex, setOverIndex] = useState<number | null>(null);
+  const [showMoveModal, setShowMoveModal] = useState<number | null>(null);
+  const [moveTarget, setMoveTarget] = useState("");
+  const [moveError, setMoveError] = useState<string | null>(null);
 
   const updateRange = useCallback(() => {
     const el = scrollRef.current;
@@ -146,6 +149,51 @@ export default function BookletPreview({
     setOverIndex(null);
   };
 
+  const handleCardClick = (index: number) => {
+    if (!files || index >= files.length) return;
+    setShowMoveModal(index);
+    setMoveTarget("");
+    setMoveError(null);
+  };
+
+  const handleModalClose = () => {
+    setShowMoveModal(null);
+    setMoveTarget("");
+    setMoveError(null);
+  };
+
+  const handleMoveConfirm = () => {
+    if (showMoveModal === null || !files) return;
+
+    const target = parseInt(moveTarget, 10);
+
+    if (isNaN(target) || target < 1 || target > totalPages) {
+      setMoveError(t("moveModalInvalid", { max: totalPages }));
+      return;
+    }
+
+    const targetIndex = target - 1;
+
+    if (targetIndex === showMoveModal) {
+      handleModalClose();
+      return;
+    }
+
+    const reordered = [...files];
+    const [moved] = reordered.splice(showMoveModal, 1);
+    reordered.splice(targetIndex, 0, moved);
+    onReorder?.(reordered);
+    handleModalClose();
+  };
+
+  const handleInputKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      handleMoveConfirm();
+    } else if (e.key === "Escape") {
+      handleModalClose();
+    }
+  };
+
   if (!files || files.length === 0) {
     return (
       <div className="rounded border border-dashed border-stone-300 dark:border-stone-600 bg-stone-100 dark:bg-stone-800/50 py-8 px-6 text-center">
@@ -157,6 +205,7 @@ export default function BookletPreview({
   }
 
   return (
+    <>
     <div
       ref={scrollRef}
       className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 select-none"
@@ -176,6 +225,7 @@ export default function BookletPreview({
               isDragging ? "opacity-40" : ""
             } ${hasImage ? "cursor-grab" : ""}`}
             draggable={hasImage}
+            onClick={hasImage ? () => handleCardClick(i) : undefined}
             onDragStart={
               hasImage ? (e) => handleDragStart(e, i) : undefined
             }
@@ -218,5 +268,73 @@ export default function BookletPreview({
         );
       })}
     </div>
+    {showMoveModal !== null && (
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+        onClick={handleModalClose}
+      >
+        <div
+          className="bg-white dark:bg-stone-800 rounded-lg shadow-xl p-5 w-72"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-sm font-medium text-stone-800 dark:text-stone-200">
+              {t("moveModalTitle", { from: showMoveModal + 1 })}
+            </h3>
+            <button
+              onClick={handleModalClose}
+              className="text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
+              aria-label="Close"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M18 6 6 18M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <input
+            type="number"
+            min={1}
+            max={totalPages}
+            value={moveTarget}
+            onChange={(e) => {
+              setMoveTarget(e.target.value);
+              setMoveError(null);
+            }}
+            onKeyDown={handleInputKeyDown}
+            className="w-full px-3 py-1.5 text-sm border border-stone-300 dark:border-stone-600 rounded bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+            placeholder=""
+            autoFocus
+          />
+          {moveError && (
+            <p className="mt-1 text-xs text-red-600 dark:text-red-400">
+              {moveError}
+            </p>
+          )}
+          <div className="flex justify-end gap-2 mt-3">
+            <button
+              onClick={handleModalClose}
+              className="px-3 py-1.5 text-xs font-medium text-stone-600 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200 rounded transition-colors"
+            >
+              {t("moveModalCancel")}
+            </button>
+            <button
+              onClick={handleMoveConfirm}
+              className="px-3 py-1.5 text-xs font-medium text-white bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 rounded transition-colors"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   );
 }

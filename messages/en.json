@@ -15,9 +15,10 @@
     "sizeLabel": "Booklet's size",
     "imagesLabel": "Booklet pages (images)",
     "neededSuffix": "needed",
-    "imagesHint": "The order you select the images determines the page order in the final booklet — first selected goes on page 1.",
+    "imagesHint": "The order you select the images determines the page order.",
     "notEnoughFiles": "You must select at least {totalPages} images.",
     "step2": "2. Preview",
+    "previewHelp": "You can move pages by dragging them or clicking on them.",
     "previewNoFiles": "Select images to see a preview",
     "previewPage": "Page {number}",
     "step3": "3. Download",
@@ -35,7 +36,10 @@
     "sheetsRequired": "First select the number of sheets",
     "generating": "Generating PDF…",
     "generatingProgress": "{current} of {total} images processed",
-    "generatingError": "Failed to generate PDF. Please check your images and try again."
+    "generatingError": "Failed to generate PDF. Please check your images and try again.",
+    "moveModalTitle": "Move page {from} to position:",
+    "moveModalCancel": "Cancel",
+    "moveModalInvalid": "Enter a number between 1 and {max}"
   },
   "About": {
     "title": "About me",

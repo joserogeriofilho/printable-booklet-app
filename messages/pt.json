@@ -15,9 +15,10 @@
     "sizeLabel": "Tamanho do livreto",
     "imagesLabel": "Páginas do livreto (imagens)",
     "neededSuffix": "necessárias",
-    "imagesHint": "A ordem em que você seleciona as imagens determina a ordem das páginas no livreto final — a primeira selecionada vai para a página 1.",
+    "imagesHint": "A ordem em que você seleciona as imagens determina a ordem das páginas.",
     "notEnoughFiles": "Você deve selecionar pelo menos {totalPages} imagens.",
     "step2": "2. Pré-visualização",
+    "previewHelp": "Você pode mover as páginas arrastando-as ou clicando nelas.",
     "previewNoFiles": "Selecione imagens para ver uma pré-visualização",
     "previewPage": "Página {number}",
     "step3": "3. Baixar",
@@ -35,7 +36,10 @@
     "sheetsRequired": "Primeiro selecione o número de folhas",
     "generating": "Gerando PDF…",
     "generatingProgress": "{current} de {total} imagens processadas",
-    "generatingError": "Falha ao gerar o PDF. Verifique suas imagens e tente novamente."
+    "generatingError": "Falha ao gerar o PDF. Verifique suas imagens e tente novamente.",
+    "moveModalTitle": "Mover página {from} para a posição:",
+    "moveModalCancel": "Cancelar",
+    "moveModalInvalid": "Digite um número entre 1 e {max}"
   },
   "About": {
     "title": "Sobre mim",

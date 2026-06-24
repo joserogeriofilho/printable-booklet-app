@@ -15,9 +15,10 @@
     "sizeLabel": "Tamaño del folleto",
     "imagesLabel": "Páginas del folleto (imágenes)",
     "neededSuffix": "necesarias",
-    "imagesHint": "El orden en que seleccionas las imágenes determina el orden de las páginas en el folleto final — la primera seleccionada va en la página 1.",
+    "imagesHint": "El orden en que seleccionas las imágenes determina el orden de las páginas.",
     "notEnoughFiles": "Debes seleccionar al menos {totalPages} imágenes.",
     "step2": "2. Vista previa",
+    "previewHelp": "Puedes mover las páginas arrastrándolas o haciendo clic en ellas.",
     "previewNoFiles": "Selecciona imágenes para ver una vista previa",
     "previewPage": "Página {number}",
     "step3": "3. Descargar",
@@ -35,7 +36,10 @@
     "sheetsRequired": "Primero selecciona el número de hojas",
     "generating": "Generando PDF…",
     "generatingProgress": "{current} de {total} imágenes procesadas",
-    "generatingError": "Error al generar el PDF. Verifica tus imágenes e inténtalo de nuevo."
+    "generatingError": "Error al generar el PDF. Verifica tus imágenes e inténtalo de nuevo.",
+    "moveModalTitle": "Mover página {from} a la posición:",
+    "moveModalCancel": "Cancelar",
+    "moveModalInvalid": "Ingresa un número entre 1 y {max}"
   },
   "About": {
     "title": "Sobre mí",
