@@ -55,9 +55,9 @@ The entire process happens in your browser — no images are ever uploaded to a 
 ## Roadmap
 
 - [x] First release with PDF generation
-- [ ] Advanced options allowing to crop images to fit page resolution
-- [ ] Preview of the pages
-- [ ] Allow to change the order of the pages in the preview
+- [x] Image fit modes: stretch, cover, and contain with background colour
+- [x] Live preview of booklet pages
+- [x] Drag-and-drop page reordering
 
 ## The Author
 

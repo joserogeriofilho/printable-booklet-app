@@ -1,4 +1,11 @@
-const PX_PER_MM = 200 / 25.4; // 200 DPI
+import type { FitMode } from "./booklet-utils";
+
+const PX_PER_MM = 200 / 25.4;
+
+interface ProcessOptions {
+  fitMode?: FitMode;
+  backgroundColor?: string;
+}
 
 /**
  * Normalizes and resamples a user-provided image file into a JPEG data URL
@@ -10,6 +17,14 @@ const PX_PER_MM = 200 / 25.4; // 200 DPI
  * `targetWidthMm` × `targetHeightMm` at 200 DPI). The canvas is finally
  * exported as a JPEG at 92 % quality.
  *
+ * Three fit modes are supported:
+ * - `stretch` (default): stretches the image to exactly fill the target
+ *   dimensions, distorting the aspect ratio if needed.
+ * - `cover`: scales the image proportionally so it covers the entire target
+ *   area, cropping any overflow from the center.
+ * - `contain`: scales the image proportionally to fit within the target area,
+ *   filling the remaining space with a user-selected background colour.
+ *
  * The canvas pipeline converts *any* image format the browser can decode —
  * including raw camera formats, HEIC/HEIF, WebP, AVIF, TIFF, and HDR images
  * (e.g. 10-bit PQ/HLG JPEGs, HDR AVIF) — into a standard 8-bit sRGB JPEG.
@@ -17,9 +32,10 @@ const PX_PER_MM = 200 / 25.4; // 200 DPI
  * set of image formats) and ensures consistent colour rendering across PDF
  * viewers.
  *
- * @param file          - The image file selected by the user.
- * @param targetWidthMm  - Desired print width in millimetres.
- * @param targetHeightMm - Desired print height in millimetres.
+ * @param file            - The image file selected by the user.
+ * @param targetWidthMm   - Desired print width in millimetres.
+ * @param targetHeightMm  - Desired print height in millimetres.
+ * @param options         - Optional fit mode and background colour.
  * @returns A JPEG data URL (`data:image/jpeg;base64,…`) at 92 % quality,
  *          resampled to the exact pixel dimensions needed for the target size.
  */
@@ -27,6 +43,7 @@ export async function processImage(
   file: File,
   targetWidthMm: number,
   targetHeightMm: number,
+  options?: ProcessOptions,
 ): Promise<string> {
   const dataUrl = await new Promise<string>((resolve, reject) => {
     const reader = new FileReader();
@@ -49,7 +66,35 @@ export async function processImage(
   canvas.width = targetPxWidth;
   canvas.height = targetPxHeight;
   const ctx = canvas.getContext("2d")!;
-  ctx.drawImage(img, 0, 0, targetPxWidth, targetPxHeight);
+
+  const fitMode = options?.fitMode ?? "stretch";
+  const backgroundColor = options?.backgroundColor;
+
+  if (fitMode === "cover") {
+    const scale = Math.max(
+      targetPxWidth / img.width,
+      targetPxHeight / img.height,
+    );
+    const sw = targetPxWidth / scale;
+    const sh = targetPxHeight / scale;
+    const sx = (img.width - sw) / 2;
+    const sy = (img.height - sh) / 2;
+    ctx.drawImage(img, sx, sy, sw, sh, 0, 0, targetPxWidth, targetPxHeight);
+  } else if (fitMode === "contain") {
+    const scale = Math.min(
+      targetPxWidth / img.width,
+      targetPxHeight / img.height,
+    );
+    const dw = img.width * scale;
+    const dh = img.height * scale;
+    const dx = (targetPxWidth - dw) / 2;
+    const dy = (targetPxHeight - dh) / 2;
+    ctx.fillStyle = backgroundColor ?? "#ffffff";
+    ctx.fillRect(0, 0, targetPxWidth, targetPxHeight);
+    ctx.drawImage(img, 0, 0, img.width, img.height, dx, dy, dw, dh);
+  } else {
+    ctx.drawImage(img, 0, 0, targetPxWidth, targetPxHeight);
+  }
 
   return canvas.toDataURL("image/jpeg", 0.92);
 }

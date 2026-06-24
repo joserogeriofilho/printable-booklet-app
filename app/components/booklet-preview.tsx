@@ -2,10 +2,13 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslations } from "next-intl";
+import type { FitMode } from "../../src/domain/booklet-utils";
 
 interface BookletPreviewProps {
   files: File[] | null;
   totalPages: number;
+  fitMode?: FitMode;
+  backgroundColor?: string;
   onReorder?: (files: File[]) => void;
 }
 
@@ -17,6 +20,8 @@ const BUFFER = 3;
 export default function BookletPreview({
   files,
   totalPages,
+  fitMode = "stretch",
+  backgroundColor,
   onReorder,
 }: BookletPreviewProps) {
   const t = useTranslations("Home");
@@ -236,11 +241,20 @@ export default function BookletPreview({
             onDragEnd={handleDragEnd}
           >
             <div
-              className={`relative w-[160px] aspect-[1/1.414] bg-stone-200 dark:bg-stone-700 rounded border overflow-hidden transition-colors ${
+              className={`relative w-[160px] aspect-[1/1.414] rounded border overflow-hidden transition-colors ${
+                fitMode !== "contain"
+                  ? "bg-stone-200 dark:bg-stone-700"
+                  : ""
+              } ${
                 isOver
                   ? "border-red-500 dark:border-red-400"
                   : "border-stone-300 dark:border-stone-600"
               }`}
+              style={
+                fitMode === "contain" && backgroundColor
+                  ? { backgroundColor }
+                  : undefined
+              }
             >
               <div className="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5 rounded text-[10px] font-mono font-medium bg-stone-900/70 dark:bg-stone-950/80 text-stone-100 leading-tight">
                 {t("previewPage", { number: i + 1 })}
@@ -250,7 +264,13 @@ export default function BookletPreview({
                 <img
                   src={url}
                   alt={t("previewPage", { number: i + 1 })}
-                  className="w-full h-full object-cover pointer-events-none"
+                  className={`w-full h-full pointer-events-none ${
+                    fitMode === "cover"
+                      ? "object-cover"
+                      : fitMode === "contain"
+                        ? "object-contain"
+                        : "object-fill"
+                  }`}
                   loading="lazy"
                   draggable={false}
                 />

@@ -12,6 +12,14 @@ export const Sizes = {
 
 export type BookletSize = keyof typeof Sizes;
 
+export const FitModes = {
+  STRETCH: "stretch",
+  COVER: "cover",
+  CONTAIN: "contain",
+} as const;
+
+export type FitMode = (typeof FitModes)[keyof typeof FitModes];
+
 type Cell = {
   row: number;
   col: number;
@@ -86,6 +94,8 @@ export const generateLayout = (numberOfSheets: number, size: BookletSize) => {
 export const generatePdf = async (
   numberOfSheets: number,
   size: BookletSize,
+  fitMode: FitMode,
+  backgroundColor: string | null,
   files: File[],
   onProgress?: ProgressCallback,
 ) => {
@@ -132,6 +142,7 @@ export const generatePdf = async (
           files[fileIndex],
           bookletPageWidth,
           bookletPageHeight,
+          { fitMode, backgroundColor: backgroundColor ?? undefined },
         ).then((imgBase64) => {
           processed++;
           onProgress?.(processed, totalCells);
