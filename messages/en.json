@@ -8,7 +8,7 @@
   },
   "Home": {
     "title": "Printable booklet",
-    "description": "Turn your images into a printable booklet. Fold, staple, and share your own zine.",
+    "description": "Turn your images into a printable booklet. Fold, staple, and share your own zine without having to use a professional software.",
     "step1": "1. Setup your project",
     "sheetsLabel": "Number of A4 sheets",
     "sheetsRange": "1 – 50",
