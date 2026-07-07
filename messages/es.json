@@ -8,7 +8,7 @@
   },
   "Home": {
     "title": "Folleto imprimible",
-    "description": "Convierte tus imágenes en un folleto imprimible. Dobla, grapa y comparte tu propio zine sin la necesidad de un software profesional.",
+    "description": "Crea un pequeño libro o zine a partir de fotos e imágenes, sin la necesidad de softwares pagos o complejos. Imprime, corta y dobla.",
     "step1": "1. Configura tu proyecto",
     "sheetsLabel": "Número de hojas A4",
     "sheetsRange": "1 – 50",
