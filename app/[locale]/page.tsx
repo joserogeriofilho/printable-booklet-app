@@ -8,12 +8,11 @@ import { getTotalPages, generatePdf } from "../../src/domain/booklet-utils";
 import type { BookletSize, FitMode } from "../../src/domain/booklet-utils";
 import FitModeSelector from "../components/fit-mode-selector";
 
-const formFieldClasses =
-  "w-full md:max-w-sm px-4 py-2.5 text-sm border border-stone-300 dark:border-stone-600 rounded bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100";
+const formFieldClasses = "w-full md:max-w-sm px-4 py-2.5";
 
-const inputClasses = `${formFieldClasses} placeholder-stone-400 dark:placeholder-stone-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition`;
+const inputClasses = formFieldClasses;
 
-const selectClasses = `${formFieldClasses} pr-10 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition`;
+const selectClasses = `${formFieldClasses} pr-10`;
 
 const instructions = [
   { key: "instructions1", img: "/images/01-print.svg" },
@@ -76,10 +75,10 @@ export default function Page() {
   return (
     <section>
       <header className="mb-8">
-        <h1 className="mb-3 text-3xl font-bold tracking-tight text-stone-900 dark:text-stone-100">
+        <h1 className="mb-3">
           {t("title")}
         </h1>
-        <p className="text text-stone-500 dark:text-stone-400 leading-relaxed mb-5">
+        <p className="mb-5">
           {t("description")}
         </p>
         <div className="flex flex-row gap-4">
@@ -99,7 +98,7 @@ export default function Page() {
           <a
             href="https://www.buymeacoffee.com/roger.sama"
             target="_blank"
-            className="inline-flex items-center bg-[#FFDD00] text-stone-900 hover:bg-[#f5d600] dark:bg-[#FFDD00] dark:text-stone-900 dark:hover:bg-[#f5d600] transition-colors duration-200 rounded"
+            className="inline-flex items-center"
           >
             <img
               src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
@@ -115,7 +114,7 @@ export default function Page() {
         <section>
           <h2
             id="step1"
-            className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight"
+            className="mb-5"
           >
             {t("step1")}
           </h2>
@@ -124,7 +123,7 @@ export default function Page() {
             <div>
               <label
                 htmlFor="size"
-                className="block mb-2 text-sm font-medium text-stone-700 dark:text-stone-300"
+                className="block mb-2"
               >
                 {t("sizeLabel")}
               </label>
@@ -146,11 +145,10 @@ export default function Page() {
               <div className="flex items-center gap-2 mb-2">
                 <label
                   htmlFor="sheets"
-                  className="text-sm font-medium text-stone-700 dark:text-stone-300"
                 >
                   {t("sheetsLabel")}
                 </label>
-                <span className="text-xs text-stone-400 dark:text-stone-500 font-mono">
+                <span>
                   {t("sheetsRange")}
                 </span>
               </div>
@@ -163,7 +161,7 @@ export default function Page() {
                   }}
                   disabled={numberOfSheets <= 1}
                   aria-label={t("decreaseSheets")}
-                  className="px-4 py-2.5 text-lg font-medium border border-r-0 border-stone-300 dark:border-stone-600 rounded-l bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-700 active:bg-stone-200 dark:active:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:z-10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-200 select-none leading-none min-w-[44px]"
+                  className="px-4 py-2.5 focus:z-10 disabled:opacity-40 disabled:cursor-not-allowed select-none min-w-[44px]"
                 >
                   -
                 </button>
@@ -173,11 +171,7 @@ export default function Page() {
                   max={50}
                   id="sheets"
                   name="sheets"
-                  className={`${inputClasses} rounded-none text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
-                    isSheetsInvalid
-                      ? "!border-red-500 dark:!border-red-400 !ring-red-500"
-                      : ""
-                  }`}
+                  className={`${inputClasses} text-center`}
                   value={numberOfSheets || ""}
                   onChange={(e) => {
                     const raw = parseInt(e.target.value);
@@ -196,13 +190,13 @@ export default function Page() {
                   }}
                   disabled={numberOfSheets >= 50}
                   aria-label={t("increaseSheets")}
-                  className="px-4 py-2.5 text-lg font-medium border border-l-0 border-stone-300 dark:border-stone-600 rounded-r bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-700 active:bg-stone-200 dark:active:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:z-10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-200 select-none leading-none min-w-[44px]"
+                  className="px-4 py-2.5 focus:z-10 disabled:opacity-40 disabled:cursor-not-allowed select-none min-w-[44px]"
                 >
                   +
                 </button>
               </div>
               {isSheetsInvalid && (
-                <div className="text-xs text-red-600 dark:text-red-400 mt-2 block">
+                <div className="mt-2 block">
                   {t("sheetsError")}
                 </div>
               )}
@@ -212,11 +206,10 @@ export default function Page() {
               <div className="flex items-center gap-2 mb-2">
                 <label
                   htmlFor="images"
-                  className="text-sm font-medium text-stone-700 dark:text-stone-300"
                 >
                   {t("imagesLabel")}
                 </label>
-                <span className="text-xs text-stone-400 dark:text-stone-500 font-mono">
+                <span>
                   {numberOfSheets > 0
                     ? `${totalPages} ${t("neededSuffix")}`
                     : t("sheetsRequired")}
@@ -226,16 +219,16 @@ export default function Page() {
                 type="file"
                 id="images"
                 name="images"
-                className="w-full md:max-w-sm text-sm text-stone-500 dark:text-stone-400 file:mr-4 file:py-2.5 file:px-5 file:rounded file:border-0 file:text-sm file:font-medium file:bg-stone-200 dark:file:bg-stone-700 file:text-stone-700 dark:file:text-stone-200 hover:file:bg-stone-300 dark:hover:file:bg-stone-600 file:cursor-pointer file:transition"
+                className="w-full md:max-w-sm file:mr-4 file:py-2.5 file:px-5 file:cursor-pointer"
                 multiple
                 accept="image/*"
                 onChange={onChangeFiles}
               />
-              <p className="md:max-w-sm mt-2 text-xs text-stone-400 dark:text-stone-500">
+              <p className="md:max-w-sm mt-2">
                 {t("imagesHint")}
               </p>
               {files && files.length < totalPages && (
-                <p className="text-xs text-red-600 dark:text-red-400 mt-2">
+                <p className="mt-2">
                   {t("notEnoughFiles", { totalPages })}
                 </p>
               )}
@@ -250,7 +243,7 @@ export default function Page() {
               <div>
                 <label
                   htmlFor="bgColor"
-                  className="block mb-2 text-sm font-medium text-stone-700 dark:text-stone-300"
+                  className="block mb-2"
                 >
                   {t("bgColorLabel")}
                 </label>
@@ -259,7 +252,7 @@ export default function Page() {
                     type="color"
                     id="bgColor"
                     name="bgColor"
-                    className="w-10 h-10 rounded border border-stone-300 dark:border-stone-600 cursor-pointer bg-white dark:bg-stone-800 p-0.5"
+                    className="w-10 h-10 cursor-pointer p-0.5"
                     value={bgColor}
                     onChange={(e) => setBgColor(e.target.value)}
                   />
@@ -280,10 +273,10 @@ export default function Page() {
 
         {/* Step 2: Preview */}
         <section>
-          <h2 className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight">
+          <h2 className="mb-5">
             {t("step2")}
           </h2>
-          <p className="mb-4 text-xs text-stone-400 dark:text-stone-500">
+          <p className="mb-4">
             {t("previewHelp")}
           </p>
           <BookletPreview
@@ -297,12 +290,12 @@ export default function Page() {
 
         {/* Step 3: Download */}
         <section>
-          <h2 className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight">
+          <h2 className="mb-5">
             {t("step3")}
           </h2>
           <div className="flex flex-wrap gap-4 items-center">
             <button
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-stone-900 transition disabled:opacity-40 disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-2 px-5 py-2.5 disabled:opacity-40 disabled:cursor-not-allowed"
               onClick={handleDownload}
               disabled={isDisabled || isGenerating}
             >
@@ -343,7 +336,7 @@ export default function Page() {
               )}
             </button>
             {isGenerating && progress.total > 0 && (
-              <span className="text-sm text-stone-500 dark:text-stone-400 font-mono">
+              <span>
                 {t("generatingProgress", {
                   current: progress.current,
                   total: progress.total,
@@ -352,7 +345,7 @@ export default function Page() {
             )}
           </div>
           {error && (
-            <p className="mt-3 text-sm text-red-600 dark:text-red-400">
+            <p className="mt-3">
               {error}
             </p>
           )}
@@ -360,7 +353,7 @@ export default function Page() {
 
         {/* Step 4: Mount */}
         <section>
-          <h2 className="mb-5 text-lg font-semibold text-stone-800 dark:text-stone-200 tracking-tight">
+          <h2 className="mb-5">
             {t("step4")}
           </h2>
 

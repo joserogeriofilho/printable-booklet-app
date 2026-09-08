@@ -39,7 +39,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="transition-all text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200 flex align-middle relative py-1 px-2 m-1 cursor-pointer"
+      className="flex align-middle relative py-1 px-2 m-1 cursor-pointer"
       aria-label={t("label")}
     >
       {isDark ? "☀️" : "🌙"}

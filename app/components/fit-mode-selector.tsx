@@ -9,10 +9,8 @@ interface FitModeSelectorProps {
   onChange: (mode: FitMode) => void;
 }
 
-const cardSelectedClasses =
-  "border-red-500 dark:border-red-400 ring-2 ring-red-500 dark:ring-red-400";
-const cardDefaultClasses =
-  "border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 hover:border-stone-400 dark:hover:border-stone-500";
+const cardSelectedClasses = "";
+const cardDefaultClasses = "";
 
 const MODES = [
   {
@@ -40,7 +38,7 @@ export default function FitModeSelector({
 
   return (
     <div>
-      <span className="block mb-2 text-sm font-medium text-stone-700 dark:text-stone-300">
+      <span className="block mb-2">
         {t("fitModeLabel")}
       </span>
       <div className="flex gap-2 md:max-w-sm">
@@ -49,7 +47,7 @@ export default function FitModeSelector({
           return (
             <label
               key={mode}
-              className={`flex-1 min-w-0 flex flex-col items-center gap-2 p-2.5 rounded-lg border cursor-pointer transition-colors ${
+              className={`flex-1 min-w-0 flex flex-col items-center gap-2 p-2.5 cursor-pointer ${
                 selected ? cardSelectedClasses : cardDefaultClasses
               }`}
             >
@@ -62,7 +60,7 @@ export default function FitModeSelector({
                 className="sr-only"
               />
               <img src={imgSrc} alt="" className="h-20 w-auto" />
-              <span className="text-[11px] leading-tight text-center font-medium text-stone-700 dark:text-stone-300">
+              <span className="text-center">
                 {t(labelKey)}
               </span>
             </label>

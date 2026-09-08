@@ -164,7 +164,7 @@ Architecture Overview
 - **Next.js 14** — App Router, client components
 - **Static Export** — `output: "export"`, no SSR / API routes
 - **jsPDF** — Client-side PDF generation
-- **Tailwind CSS v4** — Dark mode via `@variant dark`
+- **Native CSS** — hand-written stylesheet, dark mode via `.dark` class
 - **next-intl** — Internationalisation (i18n)
 - **TypeScript** — `strictNullChecks: true`
 - **Vitest** — Unit tests with jsdom
@@ -292,7 +292,7 @@ File → FileReader → dataURL → HTMLImageElement
 - **Domain isolation** — `app/domain/` has no UI or framework imports
 - **Canvas pipeline** — handles any browser-decodable image format
 - **Typed booklet sizes** — `BookletSize` union from `Sizes` const object
-- **Dark mode** — Tailwind v4 `@variant dark`, class-based toggle
+- **Dark mode** — native CSS, class-based toggle
 
 ---
 

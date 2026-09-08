@@ -201,8 +201,8 @@ export default function BookletPreview({
 
   if (!files || files.length === 0) {
     return (
-      <div className="rounded border border-dashed border-stone-300 dark:border-stone-600 bg-stone-100 dark:bg-stone-800/50 py-8 px-6 text-center">
-        <p className="text-sm text-stone-400 dark:text-stone-500">
+      <div className="py-8 px-6 text-center">
+        <p>
           {t("previewNoFiles")}
         </p>
       </div>
@@ -214,14 +214,12 @@ export default function BookletPreview({
     <div
       ref={scrollRef}
       className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 select-none"
-      style={{ scrollbarWidth: "thin" }}
     >
       {Array.from({ length: totalPages }, (_, i) => {
         const url = imageUrls.get(i);
         const isVisible = i >= visibleRange.start && i < visibleRange.end;
         const hasImage = i < files.length;
         const isDragging = dragIndex === i;
-        const isOver = overIndex === i;
 
         return (
           <div
@@ -241,22 +239,14 @@ export default function BookletPreview({
             onDragEnd={handleDragEnd}
           >
             <div
-              className={`relative w-[160px] aspect-[1/1.414] rounded border overflow-hidden transition-colors ${
-                fitMode !== "contain"
-                  ? "bg-stone-200 dark:bg-stone-700"
-                  : ""
-              } ${
-                isOver
-                  ? "border-red-500 dark:border-red-400"
-                  : "border-stone-300 dark:border-stone-600"
-              }`}
+              className="relative w-[160px] aspect-[1/1.414] overflow-hidden"
               style={
                 fitMode === "contain" && backgroundColor
                   ? { backgroundColor }
                   : undefined
               }
             >
-              <div className="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5 rounded text-[10px] font-mono font-medium bg-stone-900/70 dark:bg-stone-950/80 text-stone-100 leading-tight">
+              <div className="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5">
                 {t("previewPage", { number: i + 1 })}
               </div>
 
@@ -275,10 +265,10 @@ export default function BookletPreview({
                   draggable={false}
                 />
               ) : hasImage ? (
-                <div className="w-full h-full animate-pulse bg-stone-300 dark:bg-stone-600" />
+                <div className="w-full h-full animate-pulse" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-xs text-stone-400 dark:text-stone-500 font-mono">
+                  <span>
                     —
                   </span>
                 </div>
@@ -290,20 +280,20 @@ export default function BookletPreview({
     </div>
     {showMoveModal !== null && (
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+        className="fixed inset-0 z-50 flex items-center justify-center"
         onClick={handleModalClose}
       >
         <div
-          className="bg-white dark:bg-stone-800 rounded-lg shadow-xl p-5 w-72"
+          className="p-5 w-72"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-sm font-medium text-stone-800 dark:text-stone-200">
+            <h3>
               {t("moveModalTitle", { from: showMoveModal + 1 })}
             </h3>
             <button
               onClick={handleModalClose}
-              className="text-stone-400 hover:text-stone-600 dark:hover:text-stone-300 transition-colors"
+              className=""
               aria-label="Close"
             >
               <svg
@@ -329,25 +319,25 @@ export default function BookletPreview({
               setMoveError(null);
             }}
             onKeyDown={handleInputKeyDown}
-            className="w-full px-3 py-1.5 text-sm border border-stone-300 dark:border-stone-600 rounded bg-white dark:bg-stone-900 text-stone-800 dark:text-stone-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+            className="w-full px-3 py-1.5"
             placeholder=""
             autoFocus
           />
           {moveError && (
-            <p className="mt-1 text-xs text-red-600 dark:text-red-400">
+            <p className="mt-1">
               {moveError}
             </p>
           )}
           <div className="flex justify-end gap-2 mt-3">
             <button
               onClick={handleModalClose}
-              className="px-3 py-1.5 text-xs font-medium text-stone-600 dark:text-stone-400 hover:text-stone-800 dark:hover:text-stone-200 rounded transition-colors"
+              className="px-3 py-1.5"
             >
               {t("moveModalCancel")}
             </button>
             <button
               onClick={handleMoveConfirm}
-              className="px-3 py-1.5 text-xs font-medium text-white bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 rounded transition-colors"
+              className="px-3 py-1.5"
             >
               OK
             </button>

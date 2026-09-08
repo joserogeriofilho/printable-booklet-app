@@ -26,7 +26,8 @@ Node.js version: `.nvmrc` pins to **22**.
 ## Gotchas
 
 - **Package manager is `pnpm`**, not npm/yarn.
-- **Dark mode** uses `.dark` class on `<html>` with Tailwind v4 `@variant dark` syntax — NOT the classic `darkMode: "class"` config.
+- **Styling is native CSS** in `app/global.css` (no CSS framework). Layout/sizing classes are hand-written utility rules.
+- **Dark mode** uses a `.dark` class on `<html>` (toggled by `ThemeToggle`) with native CSS selectors like `.dark .dark\:bg-stone-600`.
 - **TypeScript**: `"strict": false`, but `"strictNullChecks": true`.
 - **`trailingSlash: true`** is set — all routes end with `/`.
 - **Images are unoptimized** — required for static export.

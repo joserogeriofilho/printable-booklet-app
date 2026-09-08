@@ -1,12 +1,12 @@
 function Text({ children }: { children: React.ReactNode }) {
   return (
-    <div className="text-sm text-stone-500 dark:text-stone-400">{children}</div>
+    <div>{children}</div>
   );
 }
 
 function Media({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-stone-200 dark:bg-stone-600 rounded p-2 mt-2">
+    <div className="p-2 mt-2">
       {children}
     </div>
   );
