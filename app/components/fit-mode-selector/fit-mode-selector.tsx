@@ -1,16 +1,14 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import type { FitMode } from "../../src/domain/booklet-utils";
-import { FitModes } from "../../src/domain/booklet-utils";
+import type { FitMode } from "../../../src/domain/booklet-utils";
+import { FitModes } from "../../../src/domain/booklet-utils";
+import styles from "./fit-mode-selector.module.css";
 
 interface FitModeSelectorProps {
   value: FitMode;
   onChange: (mode: FitMode) => void;
 }
-
-const cardSelectedClasses = "";
-const cardDefaultClasses = "";
 
 const MODES = [
   {
@@ -30,7 +28,7 @@ const MODES = [
   },
 ];
 
-export default function FitModeSelector({
+export function FitModeSelector({
   value,
   onChange,
 }: FitModeSelectorProps) {
@@ -38,18 +36,16 @@ export default function FitModeSelector({
 
   return (
     <div>
-      <span className="block mb-2">
+      <span className={styles.label}>
         {t("fitModeLabel")}
       </span>
-      <div className="flex gap-2 md:max-w-sm">
+      <div className={styles.options}>
         {MODES.map(({ mode, labelKey, imgSrc }) => {
           const selected = value === mode;
           return (
             <label
               key={mode}
-              className={`flex-1 min-w-0 flex flex-col items-center gap-2 p-2.5 cursor-pointer ${
-                selected ? cardSelectedClasses : cardDefaultClasses
-              }`}
+              className={styles.card}
             >
               <input
                 type="radio"
@@ -57,10 +53,10 @@ export default function FitModeSelector({
                 value={mode}
                 checked={selected}
                 onChange={() => onChange(mode)}
-                className="sr-only"
+                className={styles.input}
               />
-              <img src={imgSrc} alt="" className="h-20 w-auto" />
-              <span className="text-center">
+              <img src={imgSrc} alt="" className={styles.image} />
+              <span className={styles.text}>
                 {t(labelKey)}
               </span>
             </label>

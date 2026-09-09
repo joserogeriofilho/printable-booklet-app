@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import BookletPreview from "./booklet-preview";
+import { BookletPreview } from "./booklet-preview";
 
 vi.mock("next-intl", () => ({
   useTranslations:
@@ -27,11 +27,7 @@ function createFiles(count: number): File[] {
 }
 
 async function clickCard(pageNumber: number) {
-  const badges = screen.getAllByText(
-    `previewPage_number=${pageNumber}`,
-    { selector: "div" },
-  );
-  const card = badges[0].closest(".flex-shrink-0")!;
+  const card = screen.getByTestId(`page-card-${pageNumber - 1}`);
   await user.click(card);
 }
 
@@ -127,7 +123,7 @@ describe("BookletPreview", () => {
       render(<BookletPreview files={files} totalPages={4} />);
 
       await clickCard(1);
-      const overlay = screen.getByRole("spinbutton").closest(".fixed")!;
+      const overlay = screen.getByTestId("move-modal-overlay");
       await user.click(overlay);
 
       expect(screen.queryByRole("spinbutton")).toBeNull();

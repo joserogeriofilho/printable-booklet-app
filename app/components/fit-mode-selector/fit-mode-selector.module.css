@@ -1,0 +1,47 @@
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .options {
+    max-width: 24rem;
+  }
+}
+
+.card {
+  flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem;
+  cursor: pointer;
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.image {
+  height: 5rem;
+  width: auto;
+}
+
+.text {
+  text-align: center;
+}

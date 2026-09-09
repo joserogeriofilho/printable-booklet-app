@@ -1,8 +1,9 @@
 "use client";
 
-import { usePathname, useRouter } from "../../src/i18n/navigation";
+import { usePathname, useRouter } from "../../../src/i18n/navigation";
 import { useLocale } from "next-intl";
-import { routing } from "../../src/i18n/routing";
+import { routing } from "../../../src/i18n/routing";
+import styles from "./locale-switcher.module.css";
 
 export function LocaleSwitcher() {
   const locale = useLocale();
@@ -13,7 +14,7 @@ export function LocaleSwitcher() {
     <select
       value={locale}
       onChange={(e) => router.replace(pathname, { locale: e.target.value })}
-      className="py-1 pl-4 pr-10 m-1 cursor-pointer"
+      className={styles.select}
     >
       {routing.locales.map((l) => (
         <option key={l} value={l}>

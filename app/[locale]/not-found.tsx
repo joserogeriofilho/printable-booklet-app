@@ -1,16 +1,17 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import styles from "./not-found.module.css";
 
 export default function NotFound() {
   const t = useTranslations("NotFound");
 
   return (
-    <section>
-      <h1 className="mb-8">
+    <section className={styles.root}>
+      <h1 className={styles.title}>
         {t("title")}
       </h1>
-      <p className="mb-4">{t("description")}</p>
+      <p className={styles.description}>{t("description")}</p>
     </section>
   );
 }

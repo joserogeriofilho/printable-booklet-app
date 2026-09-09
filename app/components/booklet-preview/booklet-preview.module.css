@@ -1,0 +1,130 @@
+.emptyState {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  text-align: center;
+}
+
+.scrollContainer {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 0.5rem;
+  user-select: none;
+}
+
+.card {
+  flex-shrink: 0;
+  scroll-snap-align: center;
+}
+
+.cardDragging {
+  opacity: 0.4;
+}
+
+.cardDraggable {
+  cursor: grab;
+}
+
+.cardInner {
+  position: relative;
+  aspect-ratio: 1 / 1.414;
+  overflow: hidden;
+}
+
+.badge {
+  position: absolute;
+  top: 0.375rem;
+  left: 0.375rem;
+  z-index: 10;
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.fitCover {
+  object-fit: cover;
+}
+
+.fitContain {
+  object-fit: contain;
+}
+
+.fitFill {
+  object-fit: fill;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.emptyPage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  padding: 1.25rem;
+  width: 18rem;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.modalInput {
+  width: 100%;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+}
+
+.modalError {
+  margin-top: 0.25rem;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.modalButton {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+}

@@ -1,0 +1,11 @@
+.root {
+  min-width: 0;
+}
+
+.title {
+  margin-bottom: 2rem;
+}
+
+.description {
+  margin-bottom: 1rem;
+}

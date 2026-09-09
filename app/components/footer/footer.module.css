@@ -1,0 +1,32 @@
+.footer {
+  margin-bottom: 4rem;
+  margin-top: 4rem;
+  padding-top: 2rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .list {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+}
+
+.linkText {
+  margin-left: 0.5rem;
+  height: 1.75rem;
+}
+
+.copyright {
+  margin-top: 1rem;
+}

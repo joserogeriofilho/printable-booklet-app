@@ -1,3 +1,5 @@
+import styles from "./illustrated-section.module.css";
+
 function Text({ children }: { children: React.ReactNode }) {
   return (
     <div>{children}</div>
@@ -6,18 +8,18 @@ function Text({ children }: { children: React.ReactNode }) {
 
 function Media({ children }: { children: React.ReactNode }) {
   return (
-    <div className="p-2 mt-2">
+    <div className={styles.media}>
       {children}
     </div>
   );
 }
 
-export default function IllustratedSection({
+export function IllustratedSection({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <div className="flex flex-col justify-between">{children}</div>;
+  return <div className={styles.section}>{children}</div>;
 }
 
 IllustratedSection.Text = Text;

@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslations } from "next-intl";
-import type { FitMode } from "../../src/domain/booklet-utils";
+import type { FitMode } from "../../../src/domain/booklet-utils";
+import styles from "./booklet-preview.module.css";
 
 interface BookletPreviewProps {
   files: File[] | null;
@@ -17,7 +18,7 @@ const CARD_GAP = 12;
 const CARD_STEP = CARD_WIDTH + CARD_GAP;
 const BUFFER = 3;
 
-export default function BookletPreview({
+export function BookletPreview({
   files,
   totalPages,
   fitMode = "stretch",
@@ -201,7 +202,7 @@ export default function BookletPreview({
 
   if (!files || files.length === 0) {
     return (
-      <div className="py-8 px-6 text-center">
+      <div className={styles.emptyState}>
         <p>
           {t("previewNoFiles")}
         </p>
@@ -213,7 +214,8 @@ export default function BookletPreview({
     <>
     <div
       ref={scrollRef}
-      className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 select-none"
+      className={styles.scrollContainer}
+      style={{ gap: CARD_GAP }}
     >
       {Array.from({ length: totalPages }, (_, i) => {
         const url = imageUrls.get(i);
@@ -221,12 +223,28 @@ export default function BookletPreview({
         const hasImage = i < files.length;
         const isDragging = dragIndex === i;
 
+        const cardClasses = [
+          styles.card,
+          isDragging ? styles.cardDragging : "",
+          hasImage ? styles.cardDraggable : "",
+        ]
+          .filter(Boolean)
+          .join(" ");
+
+        const imageClasses = [
+          styles.image,
+          fitMode === "cover"
+            ? styles.fitCover
+            : fitMode === "contain"
+              ? styles.fitContain
+              : styles.fitFill,
+        ].join(" ");
+
         return (
           <div
             key={i}
-            className={`flex-shrink-0 snap-center ${
-              isDragging ? "opacity-40" : ""
-            } ${hasImage ? "cursor-grab" : ""}`}
+            data-testid={`page-card-${i}`}
+            className={cardClasses}
             draggable={hasImage}
             onClick={hasImage ? () => handleCardClick(i) : undefined}
             onDragStart={
@@ -239,14 +257,15 @@ export default function BookletPreview({
             onDragEnd={handleDragEnd}
           >
             <div
-              className="relative w-[160px] aspect-[1/1.414] overflow-hidden"
-              style={
-                fitMode === "contain" && backgroundColor
+              className={styles.cardInner}
+              style={{
+                width: CARD_WIDTH,
+                ...(fitMode === "contain" && backgroundColor
                   ? { backgroundColor }
-                  : undefined
-              }
+                  : {}),
+              }}
             >
-              <div className="absolute top-1.5 left-1.5 z-10 px-1.5 py-0.5">
+              <div className={styles.badge}>
                 {t("previewPage", { number: i + 1 })}
               </div>
 
@@ -254,20 +273,14 @@ export default function BookletPreview({
                 <img
                   src={url}
                   alt={t("previewPage", { number: i + 1 })}
-                  className={`w-full h-full pointer-events-none ${
-                    fitMode === "cover"
-                      ? "object-cover"
-                      : fitMode === "contain"
-                        ? "object-contain"
-                        : "object-fill"
-                  }`}
+                  className={imageClasses}
                   loading="lazy"
                   draggable={false}
                 />
               ) : hasImage ? (
-                <div className="w-full h-full animate-pulse" />
+                <div className={styles.placeholder} />
               ) : (
-                <div className="w-full h-full flex items-center justify-center">
+                <div className={styles.emptyPage}>
                   <span>
                     —
                   </span>
@@ -280,20 +293,20 @@ export default function BookletPreview({
     </div>
     {showMoveModal !== null && (
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center"
+        data-testid="move-modal-overlay"
+        className={styles.modalOverlay}
         onClick={handleModalClose}
       >
         <div
-          className="p-5 w-72"
+          className={styles.modal}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="flex items-center justify-between mb-3">
+          <div className={styles.modalHeader}>
             <h3>
               {t("moveModalTitle", { from: showMoveModal + 1 })}
             </h3>
             <button
               onClick={handleModalClose}
-              className=""
               aria-label="Close"
             >
               <svg
@@ -319,25 +332,24 @@ export default function BookletPreview({
               setMoveError(null);
             }}
             onKeyDown={handleInputKeyDown}
-            className="w-full px-3 py-1.5"
-            placeholder=""
+            className={styles.modalInput}
             autoFocus
           />
           {moveError && (
-            <p className="mt-1">
+            <p className={styles.modalError}>
               {moveError}
             </p>
           )}
-          <div className="flex justify-end gap-2 mt-3">
+          <div className={styles.modalActions}>
             <button
               onClick={handleModalClose}
-              className="px-3 py-1.5"
+              className={styles.modalButton}
             >
               {t("moveModalCancel")}
             </button>
             <button
               onClick={handleMoveConfirm}
-              className="px-3 py-1.5"
+              className={styles.modalButton}
             >
               OK
             </button>

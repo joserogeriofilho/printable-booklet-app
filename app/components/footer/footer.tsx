@@ -1,7 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Link } from "../../src/i18n/navigation";
+import { Link } from "../../../src/i18n/navigation";
+import styles from "./footer.module.css";
 
 function ArrowIcon() {
   return (
@@ -20,25 +21,25 @@ function ArrowIcon() {
   );
 }
 
-export default function Footer() {
+export function Footer() {
   const t = useTranslations("Footer");
 
   return (
-    <footer className="mb-16 mt-16 pt-8">
-      <ul className="flex flex-col space-x-0 space-y-2 md:flex-row md:space-x-4 md:space-y-0">
+    <footer className={styles.footer}>
+      <ul className={styles.list}>
         <li>
           <Link
-            className="flex items-center"
+            className={styles.link}
             href="https://github.com/joserogeriofilho/printable-booklet-app"
             target="_blank"
             rel="noopener noreferrer"
           >
             <ArrowIcon />
-            <span className="ml-2 h-7">{t("site")}</span>
+            <span className={styles.linkText}>{t("site")}</span>
           </Link>
         </li>
       </ul>
-      <p className="mt-4">
+      <p className={styles.copyright}>
         {t("copyright", { year: new Date().getFullYear() })}
       </p>
     </footer>

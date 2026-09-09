@@ -2,17 +2,18 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import IllustratedSection from "../components/illustrated-section";
-import BookletPreview from "../components/booklet-preview";
+import { IllustratedSection } from "../components/illustrated-section";
+import { BookletPreview } from "../components/booklet-preview";
 import { getTotalPages, generatePdf } from "../../src/domain/booklet-utils";
 import type { BookletSize, FitMode } from "../../src/domain/booklet-utils";
-import FitModeSelector from "../components/fit-mode-selector";
+import { FitModeSelector } from "../components/fit-mode-selector";
+import { GitHubButton } from "../components/github-button";
+import { BuyMeACoffee } from "../components/buy-me-a-coffee";
+import styles from "./page.module.css";
 
-const formFieldClasses = "w-full md:max-w-sm px-4 py-2.5";
+const inputClasses = styles.field;
 
-const inputClasses = formFieldClasses;
-
-const selectClasses = `${formFieldClasses} pr-10`;
+const selectClasses = styles.select;
 
 const instructions = [
   { key: "instructions1", img: "/images/01-print.svg" },
@@ -73,57 +74,35 @@ export default function Page() {
   };
 
   return (
-    <section>
-      <header className="mb-8">
-        <h1 className="mb-3">
+    <section className={styles.root}>
+      <header className={styles.header}>
+        <h1 className={styles.title}>
           {t("title")}
         </h1>
-        <p className="mb-5">
+        <p className={styles.description}>
           {t("description")}
         </p>
-        <div className="flex flex-row gap-4">
-          <a
-            href="https://github.com/joserogeriofilho/printable-booklet-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-4 py-2 bg-stone-800 text-stone-100 hover:bg-stone-600 dark:bg-stone-600 dark:text-stone-100 dark:hover:bg-stone-400 transition-colors duration-200 rounded"
-          >
-            <img
-              src="/images/github-logo.svg"
-              alt="GitHub"
-              className="w-5 h-5 mr-2"
-            />
-            Github
-          </a>
-          <a
-            href="https://www.buymeacoffee.com/roger.sama"
-            target="_blank"
-            className="inline-flex items-center"
-          >
-            <img
-              src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-              style={{ height: "36px" }}
-              alt="Buy Me a Coffee"
-            />
-          </a>
+        <div className={styles.links}>
+          <GitHubButton />
+          <BuyMeACoffee />
         </div>
       </header>
 
-      <div className="space-y-10">
+      <div className={styles.steps}>
         {/* Step 1: Setup */}
         <section>
           <h2
             id="step1"
-            className="mb-5"
+            className={styles.stepTitle}
           >
             {t("step1")}
           </h2>
 
-          <div className="space-y-5">
+          <div className={styles.stepBody}>
             <div>
               <label
                 htmlFor="size"
-                className="block mb-2"
+                className={styles.fieldLabel}
               >
                 {t("sizeLabel")}
               </label>
@@ -142,7 +121,7 @@ export default function Page() {
             </div>
 
             <div>
-              <div className="flex items-center gap-2 mb-2">
+              <div className={styles.fieldRow}>
                 <label
                   htmlFor="sheets"
                 >
@@ -152,7 +131,7 @@ export default function Page() {
                   {t("sheetsRange")}
                 </span>
               </div>
-              <div className="flex w-full md:max-w-sm">
+              <div className={styles.stepper}>
                 <button
                   onClick={() => {
                     if (numberOfSheets > 1) {
@@ -161,7 +140,7 @@ export default function Page() {
                   }}
                   disabled={numberOfSheets <= 1}
                   aria-label={t("decreaseSheets")}
-                  className="px-4 py-2.5 focus:z-10 disabled:opacity-40 disabled:cursor-not-allowed select-none min-w-[44px]"
+                  className={styles.stepperButton}
                 >
                   -
                 </button>
@@ -171,7 +150,7 @@ export default function Page() {
                   max={50}
                   id="sheets"
                   name="sheets"
-                  className={`${inputClasses} text-center`}
+                  className={styles.numberInput}
                   value={numberOfSheets || ""}
                   onChange={(e) => {
                     const raw = parseInt(e.target.value);
@@ -190,20 +169,20 @@ export default function Page() {
                   }}
                   disabled={numberOfSheets >= 50}
                   aria-label={t("increaseSheets")}
-                  className="px-4 py-2.5 focus:z-10 disabled:opacity-40 disabled:cursor-not-allowed select-none min-w-[44px]"
+                  className={styles.stepperButton}
                 >
                   +
                 </button>
               </div>
               {isSheetsInvalid && (
-                <div className="mt-2 block">
+                <div className={styles.fieldError}>
                   {t("sheetsError")}
                 </div>
               )}
             </div>
 
             <div>
-              <div className="flex items-center gap-2 mb-2">
+              <div className={styles.fieldRow}>
                 <label
                   htmlFor="images"
                 >
@@ -219,16 +198,16 @@ export default function Page() {
                 type="file"
                 id="images"
                 name="images"
-                className="w-full md:max-w-sm file:mr-4 file:py-2.5 file:px-5 file:cursor-pointer"
+                className={styles.fileInput}
                 multiple
                 accept="image/*"
                 onChange={onChangeFiles}
               />
-              <p className="md:max-w-sm mt-2">
+              <p className={styles.hint}>
                 {t("imagesHint")}
               </p>
               {files && files.length < totalPages && (
-                <p className="mt-2">
+                <p className={styles.note}>
                   {t("notEnoughFiles", { totalPages })}
                 </p>
               )}
@@ -243,16 +222,16 @@ export default function Page() {
               <div>
                 <label
                   htmlFor="bgColor"
-                  className="block mb-2"
+                  className={styles.fieldLabel}
                 >
                   {t("bgColorLabel")}
                 </label>
-                <div className="flex items-center gap-2">
+                <div className={styles.colorRow}>
                   <input
                     type="color"
                     id="bgColor"
                     name="bgColor"
-                    className="w-10 h-10 cursor-pointer p-0.5"
+                    className={styles.colorInput}
                     value={bgColor}
                     onChange={(e) => setBgColor(e.target.value)}
                   />
@@ -273,10 +252,10 @@ export default function Page() {
 
         {/* Step 2: Preview */}
         <section>
-          <h2 className="mb-5">
+          <h2 className={styles.stepTitle}>
             {t("step2")}
           </h2>
-          <p className="mb-4">
+          <p className={styles.help}>
             {t("previewHelp")}
           </p>
           <BookletPreview
@@ -290,19 +269,19 @@ export default function Page() {
 
         {/* Step 3: Download */}
         <section>
-          <h2 className="mb-5">
+          <h2 className={styles.stepTitle}>
             {t("step3")}
           </h2>
-          <div className="flex flex-wrap gap-4 items-center">
+          <div className={styles.downloadRow}>
             <button
-              className="inline-flex items-center gap-2 px-5 py-2.5 disabled:opacity-40 disabled:cursor-not-allowed"
+              className={styles.downloadButton}
               onClick={handleDownload}
               disabled={isDisabled || isGenerating}
             >
               {isGenerating ? (
                 <>
                   <svg
-                    className="animate-spin"
+                    className={styles.spinner}
                     width="16"
                     height="16"
                     viewBox="0 0 24 24"
@@ -345,7 +324,7 @@ export default function Page() {
             )}
           </div>
           {error && (
-            <p className="mt-3">
+            <p className={styles.error}>
               {error}
             </p>
           )}
@@ -353,11 +332,11 @@ export default function Page() {
 
         {/* Step 4: Mount */}
         <section>
-          <h2 className="mb-5">
+          <h2 className={styles.stepTitle}>
             {t("step4")}
           </h2>
 
-          <div className="grid gap-y-5 grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+          <div className={styles.instructionsGrid}>
             {instructions.map(({ key, img }) => (
               <IllustratedSection key={key}>
                 <IllustratedSection.Text>{t(key)}</IllustratedSection.Text>

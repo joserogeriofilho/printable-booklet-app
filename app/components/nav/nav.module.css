@@ -1,0 +1,36 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 2.5rem;
+  gap: 1rem;
+
+  a {
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 3px 3px black;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+}
+
+.controls {
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

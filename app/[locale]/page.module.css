@@ -1,0 +1,205 @@
+.field,
+.select,
+.numberInput {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+@media (min-width: 768px) {
+  .field,
+  .select,
+  .numberInput {
+    max-width: 24rem;
+  }
+}
+
+.select {
+  padding-right: 2.5rem;
+}
+
+.numberInput {
+  text-align: center;
+}
+
+.stepper {
+  display: flex;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .stepper {
+    max-width: 24rem;
+  }
+}
+
+.stepperButton {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  min-width: 44px;
+  user-select: none;
+}
+
+.stepperButton:focus {
+  z-index: 10;
+}
+
+.stepperButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.fileInput {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .fileInput {
+    max-width: 24rem;
+  }
+}
+
+.fileInput::file-selector-button {
+  margin-right: 1rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  cursor: pointer;
+}
+
+.colorInput {
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  padding: 0.125rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+.downloadButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.downloadButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.instructionsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  row-gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .instructionsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.root {
+  min-width: 0;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  margin-bottom: 0.75rem;
+}
+
+.description {
+  margin-bottom: 1.25rem;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.steps > * + * {
+  margin-top: 2.5rem;
+}
+
+.stepBody > * + * {
+  margin-top: 1.25rem;
+}
+
+.stepTitle {
+  margin-bottom: 1.25rem;
+}
+
+.fieldLabel {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.fieldRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.fieldError {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.note {
+  margin-top: 0.5rem;
+}
+
+.hint {
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .hint {
+    max-width: 24rem;
+  }
+}
+
+.colorRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.help {
+  margin-bottom: 1rem;
+}
+
+.downloadRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.error {
+  margin-top: 0.75rem;
+}

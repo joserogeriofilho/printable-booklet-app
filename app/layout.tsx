@@ -1,6 +1,7 @@
 import "./global.css";
 import type { Metadata } from "next";
 import { baseUrl } from "./sitemap";
+import styles from "./layout.module.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -37,8 +38,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="max-w-4xl mt-8 mx-auto">
-        <main className="flex-auto min-w-0 mt-6 flex flex-col px-4 xl:px-0">
+      <body className={styles.body}>
+        <main className={styles.main}>
           {children}
         </main>
       </body>

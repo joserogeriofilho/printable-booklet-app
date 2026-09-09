@@ -60,7 +60,7 @@ mode:
 `generatePdf()` now accepts `fitMode` and `backgroundColor` parameters, which
 are forwarded to `processImage()`.
 
-### Preview component (`app/components/booklet-preview.tsx`)
+### Preview component (`app/components/booklet-preview/booklet-preview.tsx`)
 
 The `BookletPreview` component accepts `fitMode` and `backgroundColor` as
 optional props and maps them to CSS:
@@ -69,7 +69,7 @@ optional props and maps them to CSS:
 - `cover` → `object-cover`
 - `contain` → `object-contain` + inline `backgroundColor` on the card container
 
-### UI form (`app/[locale]/page.tsx` + `app/components/fit-mode-selector.tsx`)
+### UI form (`app/[locale]/page.tsx` + `app/components/fit-mode-selector/fit-mode-selector.tsx`)
 
 Two new state hooks (`fitMode`, `bgColor`) drive a `FitModeSelector` component
 inside Step 1. The component renders three radio-button cards arranged in a

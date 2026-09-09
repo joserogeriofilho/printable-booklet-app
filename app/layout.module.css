@@ -1,0 +1,23 @@
+.body {
+  max-width: 56rem;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 1280px) {
+  .main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
