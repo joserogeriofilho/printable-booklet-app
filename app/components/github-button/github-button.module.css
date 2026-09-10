@@ -12,6 +12,7 @@
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
   box-shadow: 4px 4px black;
+  text-decoration: none;
 }
 
 .githubButton:hover {

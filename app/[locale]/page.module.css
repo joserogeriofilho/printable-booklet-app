@@ -1,19 +1,14 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
 .field,
 .select,
 .numberInput {
   width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
-}
-
-@media (min-width: 768px) {
-  .field,
-  .select,
-  .numberInput {
-    max-width: 24rem;
-  }
+  padding: 0.625rem 1rem;
 }
 
 .select {
@@ -29,17 +24,8 @@
   width: 100%;
 }
 
-@media (min-width: 768px) {
-  .stepper {
-    max-width: 24rem;
-  }
-}
-
 .stepperButton {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
+  padding: 0.625rem 1rem;
   min-width: 44px;
   user-select: none;
 }
@@ -57,18 +43,9 @@
   width: 100%;
 }
 
-@media (min-width: 768px) {
-  .fileInput {
-    max-width: 24rem;
-  }
-}
-
 .fileInput::file-selector-button {
   margin-right: 1rem;
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding: 0.625rem 1.25rem;
   cursor: pointer;
 }
 
@@ -93,10 +70,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
+  padding: 0.625rem 1.25rem;
 }
 
 .downloadButton:disabled {
@@ -118,20 +92,10 @@
   }
 }
 
-.root {
-  min-width: 0;
-}
-
 .header {
-  margin-bottom: 2rem;
-}
-
-.title {
-  margin-bottom: 0.75rem;
-}
-
-.description {
-  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .links {
@@ -140,16 +104,8 @@
   gap: 1rem;
 }
 
-.steps > * + * {
-  margin-top: 2.5rem;
-}
-
-.stepBody > * + * {
-  margin-top: 1.25rem;
-}
-
 .stepTitle {
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .fieldLabel {
@@ -177,12 +133,6 @@
   margin-top: 0.5rem;
 }
 
-@media (min-width: 768px) {
-  .hint {
-    max-width: 24rem;
-  }
-}
-
 .colorRow {
   display: flex;
   align-items: center;
@@ -202,4 +152,15 @@
 
 .error {
   margin-top: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .field,
+  .select,
+  .numberInput,
+  .stepper,
+  .fileInput,
+  .hint {
+    max-width: 24rem;
+  }
 }

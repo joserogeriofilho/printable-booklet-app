@@ -23,14 +23,18 @@ export function Navbar() {
     <nav className={styles.nav} id="nav">
       <div className={styles.links}>
         {navItems.map(({ path, key }) => (
-          <Link key={path} href={path}>
+          <Link
+            key={path}
+            href={path}
+            className={pathname === path ? styles.active : undefined}
+          >
             {t(key)}
           </Link>
         ))}
       </div>
       <div className={styles.controls}>
-        <LocaleSwitcher />
         <ThemeToggle />
+        <LocaleSwitcher />
       </div>
     </nav>
   );

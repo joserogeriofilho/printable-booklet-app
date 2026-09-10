@@ -25,7 +25,7 @@ export function Footer() {
   const t = useTranslations("Footer");
 
   return (
-    <footer className={styles.footer}>
+    <footer>
       <ul className={styles.list}>
         <li>
           <Link
