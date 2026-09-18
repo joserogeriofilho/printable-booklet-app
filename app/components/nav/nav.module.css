@@ -1,7 +1,7 @@
 .nav {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   font-size: 0.75rem;
   position: relative;
   padding-left: 0;

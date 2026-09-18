@@ -28,25 +28,17 @@ const MODES = [
   },
 ];
 
-export function FitModeSelector({
-  value,
-  onChange,
-}: FitModeSelectorProps) {
+export function FitModeSelector({ value, onChange }: FitModeSelectorProps) {
   const t = useTranslations("Home");
 
   return (
-    <div>
-      <span className={styles.label}>
-        {t("fitModeLabel")}
-      </span>
+    <div className={styles.container}>
+      <h3>{t("fitModeLabel")}</h3>
       <div className={styles.options}>
         {MODES.map(({ mode, labelKey, imgSrc }) => {
           const selected = value === mode;
           return (
-            <label
-              key={mode}
-              className={styles.card}
-            >
+            <label key={mode} className={styles.card}>
               <input
                 type="radio"
                 name="fitMode"
@@ -56,9 +48,7 @@ export function FitModeSelector({
                 className={styles.input}
               />
               <img src={imgSrc} alt="" className={styles.image} />
-              <span className={styles.text}>
-                {t(labelKey)}
-              </span>
+              <span className={styles.text}>{t(labelKey)}</span>
             </label>
           );
         })}

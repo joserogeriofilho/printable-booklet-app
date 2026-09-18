@@ -19,7 +19,6 @@ const instructions = [
   { key: "instructions1", img: "/images/01-print.svg" },
   { key: "instructions2", img: "/images/02-cut.svg" },
   { key: "instructions3", img: "/images/03-mount.svg" },
-  { key: "instructions4", img: "/images/04-fold.svg" },
   { key: "instructions5", img: "/images/05-staple.svg" },
 ];
 
@@ -76,12 +75,8 @@ export default function Page() {
   return (
     <div className={styles.root}>
       <header className={styles.header}>
-        <h1 className={styles.title}>
-          {t("title")}
-        </h1>
-        <p className={styles.description}>
-          {t("description")}
-        </p>
+        <h1 className={styles.title}>{t("title")}</h1>
+        <p className={styles.description}>{t("description")}</p>
         <div className={styles.links}>
           <GitHubButton />
           <BuyMeACoffee />
@@ -114,13 +109,9 @@ export default function Page() {
           </div>
 
           <div>
-            <div className={styles.fieldRow}>
-              <label htmlFor="sheets">
-                {t("sheetsLabel")}
-              </label>
-              <span>
-                {t("sheetsRange")}
-              </span>
+            <div className={styles.labelRow}>
+              <label htmlFor="sheets">{t("sheetsLabel")}</label>
+              <span>{t("sheetsRange")}</span>
             </div>
             <div className={styles.stepper}>
               <button
@@ -166,17 +157,13 @@ export default function Page() {
               </button>
             </div>
             {isSheetsInvalid && (
-              <div className={styles.fieldError}>
-                {t("sheetsError")}
-              </div>
+              <div className={styles.fieldError}>{t("sheetsError")}</div>
             )}
           </div>
 
           <div>
-            <div className={styles.fieldRow}>
-              <label htmlFor="images">
-                {t("imagesLabel")}
-              </label>
+            <div className={styles.labelRow}>
+              <label htmlFor="images">{t("imagesLabel")}</label>
               <span>
                 {numberOfSheets > 0
                   ? `${totalPages} ${t("neededSuffix")}`
@@ -192,20 +179,14 @@ export default function Page() {
               accept="image/*"
               onChange={onChangeFiles}
             />
-            <p className={styles.hint}>
-              {t("imagesHint")}
-            </p>
             {files && files.length < totalPages && (
-              <p className={styles.note}>
+              <p className={styles.errorMessage}>
                 {t("notEnoughFiles", { totalPages })}
               </p>
             )}
           </div>
 
-          <FitModeSelector
-            value={fitMode}
-            onChange={setFitMode}
-          />
+          <FitModeSelector value={fitMode} onChange={setFitMode} />
 
           {fitMode === "contain" && (
             <div>
@@ -240,9 +221,7 @@ export default function Page() {
         <h2 id="step2" className={styles.stepTitle}>
           {t("step2")}
         </h2>
-        <p className={styles.help}>
-          {t("previewHelp")}
-        </p>
+        <p className={styles.help}>{t("previewHelp")}</p>
         <BookletPreview
           files={files}
           totalPages={totalPages}
@@ -308,11 +287,7 @@ export default function Page() {
             </span>
           )}
         </div>
-        {error && (
-          <p className={styles.error}>
-            {error}
-          </p>
-        )}
+        {error && <p className={styles.error}>{error}</p>}
       </section>
 
       {/* Step 4: Mount */}
@@ -321,7 +296,7 @@ export default function Page() {
           {t("step4")}
         </h2>
 
-        <div className={styles.instructionsGrid}>
+        <div className={styles.instructionsContainer}>
           {instructions.map(({ key, img }) => (
             <IllustratedSection key={key}>
               <IllustratedSection.Text>{t(key)}</IllustratedSection.Text>

@@ -1,6 +1,9 @@
-.label {
-  display: block;
-  margin-bottom: 0.5rem;
+.container {
+  h3 {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
 }
 
 .options {
@@ -23,18 +26,11 @@
   gap: 0.5rem;
   padding: 0.625rem;
   cursor: pointer;
-}
 
-.input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+  box-sizing: border-box;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: lightgray;
 }
 
 .image {
@@ -44,4 +40,6 @@
 
 .text {
   text-align: center;
+  font-size: 0.725rem;
+  font-weight: 400;
 }
