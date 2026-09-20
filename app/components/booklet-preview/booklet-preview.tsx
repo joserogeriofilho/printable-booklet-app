@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import type { FitMode } from "../../../src/domain/booklet-utils";
 import styles from "./booklet-preview.module.css";
@@ -13,11 +13,6 @@ interface BookletPreviewProps {
   onReorder?: (files: File[]) => void;
 }
 
-const CARD_WIDTH = 160;
-const CARD_GAP = 12;
-const CARD_STEP = CARD_WIDTH + CARD_GAP;
-const BUFFER = 3;
-
 export function BookletPreview({
   files,
   totalPages,
@@ -26,103 +21,31 @@ export function BookletPreview({
   onReorder,
 }: BookletPreviewProps) {
   const t = useTranslations("Home");
-  const scrollRef = useRef<HTMLDivElement>(null);
   const [imageUrls, setImageUrls] = useState<Map<number, string>>(new Map());
-  const [visibleRange, setVisibleRange] = useState({ start: 0, end: 8 });
-  const allUrlsRef = useRef<Set<string>>(new Set());
-  const prevFilesRef = useRef(files);
   const [dragIndex, setDragIndex] = useState<number | null>(null);
   const [overIndex, setOverIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [showMoveModal, setShowMoveModal] = useState<number | null>(null);
   const [moveTarget, setMoveTarget] = useState("");
   const [moveError, setMoveError] = useState<string | null>(null);
 
-  const updateRange = useCallback(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    const viewStart = el.scrollLeft;
-    const viewEnd = viewStart + el.clientWidth;
-
-    const start = Math.max(0, Math.floor(viewStart / CARD_STEP) - BUFFER);
-    const end = Math.min(
-      totalPages,
-      Math.ceil(viewEnd / CARD_STEP) + BUFFER,
-    );
-
-    setVisibleRange((prev) =>
-      prev.start === start && prev.end === end ? prev : { start, end },
-    );
-
-    if (!files) return;
-
-    const maxIndex = Math.min(files.length, totalPages);
-    const filesChanged = prevFilesRef.current !== files;
-
-    if (filesChanged) {
-      allUrlsRef.current.forEach((url) => URL.revokeObjectURL(url));
-      allUrlsRef.current.clear();
-      prevFilesRef.current = files;
+  useEffect(() => {
+    if (!files) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setImageUrls(new Map());
+      return;
     }
 
-    const changedFlag = filesChanged;
-
-    setImageUrls((prev) => {
-      const base = changedFlag ? new Map() : prev;
-      const next = new Map(base);
-
-      base.forEach((url, idx) => {
-        if (idx < start || idx >= end) {
-          URL.revokeObjectURL(url);
-          allUrlsRef.current.delete(url);
-          next.delete(idx);
-        }
-      });
-
-      for (let i = start; i < Math.min(end, maxIndex); i++) {
-        if (!next.has(i)) {
-          const url = URL.createObjectURL(files![i]);
-          allUrlsRef.current.add(url);
-          next.set(i, url);
-        }
-      }
-
-      return next;
+    const urls = new Map<number, string>();
+    files.forEach((file, i) => {
+      urls.set(i, URL.createObjectURL(file));
     });
-  }, [files, totalPages]);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    let rafId = 0;
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (!ticking) {
-        rafId = requestAnimationFrame(() => {
-          updateRange();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    el.addEventListener("scroll", handleScroll, { passive: true });
-    updateRange();
+    setImageUrls(urls);
 
     return () => {
-      el.removeEventListener("scroll", handleScroll);
-      cancelAnimationFrame(rafId);
+      urls.forEach((url) => URL.revokeObjectURL(url));
     };
-  }, [updateRange]);
-
-  useEffect(() => {
-    const allUrls = allUrlsRef.current;
-    return () => {
-      allUrls.forEach((url) => URL.revokeObjectURL(url));
-    };
-  }, []);
+  }, [files]);
 
   const handleDragStart = (e: React.DragEvent, index: number) => {
     setDragIndex(index);
@@ -157,6 +80,7 @@ export function BookletPreview({
 
   const handleCardClick = (index: number) => {
     if (!files || index >= files.length) return;
+    setSelectedIndex(index);
     setShowMoveModal(index);
     setMoveTarget("");
     setMoveError(null);
@@ -212,21 +136,18 @@ export function BookletPreview({
 
   return (
     <>
-    <div
-      ref={scrollRef}
-      className={styles.scrollContainer}
-      style={{ gap: CARD_GAP }}
-    >
+    <div className={styles.grid}>
       {Array.from({ length: totalPages }, (_, i) => {
         const url = imageUrls.get(i);
-        const isVisible = i >= visibleRange.start && i < visibleRange.end;
         const hasImage = i < files.length;
         const isDragging = dragIndex === i;
+        const isSelected = selectedIndex === i;
 
         const cardClasses = [
           styles.card,
           isDragging ? styles.cardDragging : "",
           hasImage ? styles.cardDraggable : "",
+          isSelected ? styles.cardSelected : "",
         ]
           .filter(Boolean)
           .join(" ");
@@ -246,6 +167,7 @@ export function BookletPreview({
             data-testid={`page-card-${i}`}
             className={cardClasses}
             draggable={hasImage}
+            aria-pressed={hasImage ? isSelected : undefined}
             onClick={hasImage ? () => handleCardClick(i) : undefined}
             onDragStart={
               hasImage ? (e) => handleDragStart(e, i) : undefined
@@ -258,18 +180,17 @@ export function BookletPreview({
           >
             <div
               className={styles.cardInner}
-              style={{
-                width: CARD_WIDTH,
-                ...(fitMode === "contain" && backgroundColor
+              style={
+                fitMode === "contain" && backgroundColor
                   ? { backgroundColor }
-                  : {}),
-              }}
+                  : undefined
+              }
             >
               <div className={styles.badge}>
                 {t("previewPage", { number: i + 1 })}
               </div>
 
-              {isVisible && url ? (
+              {url ? (
                 <img
                   src={url}
                   alt={t("previewPage", { number: i + 1 })}
@@ -308,6 +229,7 @@ export function BookletPreview({
             <button
               onClick={handleModalClose}
               aria-label="Close"
+              className={styles.modalClose}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

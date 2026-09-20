@@ -6,17 +6,18 @@
   text-align: center;
 }
 
-.scrollContainer {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 0.5rem;
-  user-select: none;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+  gap: 1rem;
 }
 
 .card {
-  flex-shrink: 0;
-  scroll-snap-align: center;
+  background-color: #fff;
+  border: 1px solid #000;
+  transition:
+    outline-color 120ms ease,
+    transform 120ms ease;
 }
 
 .cardDragging {
@@ -27,8 +28,14 @@
   cursor: grab;
 }
 
+.cardDraggable:hover,
+.cardSelected {
+  outline: 2px solid #000;
+}
+
 .cardInner {
   position: relative;
+  width: 100%;
   aspect-ratio: 1 / 1.414;
   overflow: hidden;
 }
@@ -42,6 +49,10 @@
   padding-right: 0.375rem;
   padding-top: 0.125rem;
   padding-bottom: 0.125rem;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+  font-size: 0.75rem;
 }
 
 .image {
@@ -71,6 +82,7 @@
 .placeholder {
   width: 100%;
   height: 100%;
+  background-color: #d6d3d1;
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
@@ -80,6 +92,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #f5f5f4;
+  color: #78716c;
 }
 
 .modalOverlay {
@@ -89,11 +103,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal {
   padding: 1.25rem;
   width: 18rem;
+  background-color: #fff;
+  border: 1px solid #000;
+  box-shadow: 4px 4px #000;
 }
 
 .modalHeader {
@@ -103,16 +121,35 @@
   margin-bottom: 0.75rem;
 }
 
+.modalClose {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid #000;
+  box-shadow: 2px 2px #000;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.modalClose:hover {
+  background-color: #000;
+  color: #fff;
+}
+
 .modalInput {
   width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
+  border: 1px solid #000;
+  background-color: #fff;
 }
 
 .modalError {
   margin-top: 0.25rem;
+  color: red;
 }
 
 .modalActions {
@@ -127,4 +164,79 @@
   padding-right: 0.75rem;
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
+  background-color: #fff;
+  border: 1px solid #000;
+  box-shadow: 2px 2px #000;
+  cursor: pointer;
+}
+
+.modalButton:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+:global(.dark) .card {
+  background-color: #1c1917;
+  border-color: #f5f5f4;
+}
+
+:global(.dark) .cardDraggable:hover {
+  outline-color: #f5f5f4;
+}
+
+:global(.dark) .cardSelected {
+  outline-color: #f5f5f4;
+}
+
+:global(.dark) .badge {
+  background-color: #1c1917;
+  color: #f5f5f4;
+  border-color: #f5f5f4;
+  box-shadow: 2px 2px #f5f5f4;
+}
+
+:global(.dark) .placeholder {
+  background-color: #44403c;
+}
+
+:global(.dark) .emptyPage {
+  background-color: #292524;
+  color: #a8a29e;
+}
+
+:global(.dark) .modal {
+  background-color: #1c1917;
+  color: #f5f5f4;
+  border-color: #f5f5f4;
+  box-shadow: 4px 4px #f5f5f4;
+}
+
+:global(.dark) .modalClose {
+  background-color: #1c1917;
+  color: #f5f5f4;
+  border-color: #f5f5f4;
+  box-shadow: 2px 2px #f5f5f4;
+}
+
+:global(.dark) .modalClose:hover {
+  background-color: #f5f5f4;
+  color: #1c1917;
+}
+
+:global(.dark) .modalInput {
+  background-color: #292524;
+  color: #f5f5f4;
+  border-color: #f5f5f4;
+}
+
+:global(.dark) .modalButton {
+  background-color: #1c1917;
+  color: #f5f5f4;
+  border-color: #f5f5f4;
+  box-shadow: 2px 2px #f5f5f4;
+}
+
+:global(.dark) .modalButton:hover {
+  background-color: #f5f5f4;
+  color: #1c1917;
 }
