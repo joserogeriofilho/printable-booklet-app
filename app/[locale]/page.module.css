@@ -11,23 +11,51 @@
   padding: 0.625rem 1rem;
 }
 
+.field {
+  border: 1px solid black;
+  box-shadow: 4px 4px black;
+  background-color: white;
+  font: inherit;
+}
+
 .select {
   padding-right: 2.5rem;
+  border: 1px solid black;
+  box-shadow: 4px 4px black;
+  background-color: white;
+  font: inherit;
+  cursor: pointer;
 }
 
 .numberInput {
   text-align: center;
+  border: none;
+  font: inherit;
 }
 
 .stepper {
   display: flex;
   width: 100%;
+  border: 1px solid black;
+  box-shadow: 4px 4px black;
+  background-color: white;
 }
 
 .stepperButton {
   padding: 0.625rem 1rem;
   min-width: 44px;
   user-select: none;
+  border: none;
+  background-color: transparent;
+  font: inherit;
+}
+
+.stepperButton:first-child {
+  border-right: 1px solid black;
+}
+
+.stepperButton:last-child {
+  border-left: 1px solid black;
 }
 
 .stepperButton:focus {
@@ -41,12 +69,19 @@
 
 .fileInput {
   width: 100%;
+  font: inherit;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
 }
 
 .fileInput::file-selector-button {
   margin-right: 1rem;
   padding: 0.625rem 1.25rem;
   cursor: pointer;
+  border: 1px solid black;
+  box-shadow: 4px 4px black;
+  background-color: white;
+  font: inherit;
 }
 
 .colorInput {
@@ -54,6 +89,9 @@
   height: 2.5rem;
   cursor: pointer;
   padding: 0.125rem;
+  border: 1px solid black;
+  box-shadow: 4px 4px black;
+  background-color: white;
 }
 
 @keyframes spin {
@@ -71,6 +109,16 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.625rem 1.25rem;
+  border: 1px solid black;
+  box-shadow: 4px 4px black;
+  background-color: black;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+.downloadButton:hover {
+  background-color: #57534e;
 }
 
 .downloadButton:disabled {

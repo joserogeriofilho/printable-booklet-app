@@ -29,8 +29,35 @@
 
   box-sizing: border-box;
   padding: 1rem;
-  border-radius: 1rem;
-  background-color: lightgray;
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 4px 4px black;
+}
+
+.card:has(input:checked) {
+  background-color: darkgray;
+}
+
+.card:hover {
+  background-color: #57534e;
+}
+
+.card:has(.input:focus-visible) {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .image {
@@ -39,7 +66,7 @@
 }
 
 .text {
-  text-align: center;
+  text-align: left;
   font-size: 0.725rem;
   font-weight: 400;
 }

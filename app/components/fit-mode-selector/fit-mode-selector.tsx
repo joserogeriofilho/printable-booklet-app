@@ -39,16 +39,18 @@ export function FitModeSelector({ value, onChange }: FitModeSelectorProps) {
           const selected = value === mode;
           return (
             <label key={mode} className={styles.card}>
-              <input
-                type="radio"
-                name="fitMode"
-                value={mode}
-                checked={selected}
-                onChange={() => onChange(mode)}
-                className={styles.input}
-              />
+              <span className={styles.header}>
+                <input
+                  type="radio"
+                  name="fitMode"
+                  value={mode}
+                  checked={selected}
+                  onChange={() => onChange(mode)}
+                  className={styles.input}
+                />
+                <span className={styles.text}>{t(labelKey)}</span>
+              </span>
               <img src={imgSrc} alt="" className={styles.image} />
-              <span className={styles.text}>{t(labelKey)}</span>
             </label>
           );
         })}
