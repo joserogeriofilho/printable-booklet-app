@@ -4,11 +4,22 @@
   justify-content: space-between;
   box-sizing: border-box;
   padding: 1rem;
-  border-radius: 1rem;
-  background-color: lightgray;
+  border: 1px solid black;
+  position: relative; /* Anchors the ::after triangle to this element */
+}
+
+.section .paperFold {
+  position: absolute;
+  right: -1;
+  bottom: -1;
+  max-width: none;
+  width: 30px;
+  height: auto;
 }
 
 .media {
+  display: flex;
+  justify-content: center;
   padding: 0.5rem;
   margin-top: 0.5rem;
 }

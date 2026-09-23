@@ -84,11 +84,15 @@
   gap: 1rem;
 
   img {
-    width: 70%;
+    width: 50%;
   }
 
   @media (min-width: 640px) {
     flex-direction: row;
+
+    img {
+      width: 100%;
+    }
   }
 }
 

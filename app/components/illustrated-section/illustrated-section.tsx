@@ -19,7 +19,12 @@ export function IllustratedSection({
 }: {
   children: React.ReactNode;
 }) {
-  return <div className={styles.section}>{children}</div>;
+  return (
+    <div className={styles.section}>
+      {children}
+      <img className={styles.paperFold} src="/images/paper-fold.svg" alt="" />
+    </div>
+  );
 }
 
 IllustratedSection.Text = Text;
