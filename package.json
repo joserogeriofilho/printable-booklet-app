@@ -13,7 +13,6 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "^4.2.2",
     "@types/node": "20.11.17",
     "@types/react": "18.2.55",
     "@types/react-dom": "18.2.19",
@@ -23,10 +22,8 @@
     "jspdf": "^4.2.1",
     "next": "^16.0.10",
     "next-intl": "^4.11.0",
-    "postcss": "^8.4.35",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
-    "tailwindcss": "^4.2.2",
     "typescript": "^5"
   },
   "devDependencies": {

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import styles from "./theme-toggle.module.css";
 
 export function ThemeToggle() {
   const t = useTranslations("ThemeToggle");
@@ -39,7 +40,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="transition-all text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200 flex align-middle relative py-1 px-2 m-1 cursor-pointer"
+      className={styles.button}
       aria-label={t("label")}
     >
       {isDark ? "☀️" : "🌙"}

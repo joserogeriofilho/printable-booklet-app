@@ -33,7 +33,7 @@ The entire process happens in your browser — no images are ever uploaded to a 
 
 - [Next.js](https://nextjs.org/) — React framework, static export mode
 - [React 19](https://react.dev/) — UI library
-- [Tailwind CSS v4](https://tailwindcss.com/) — Utility-first CSS framework
+- Native CSS — CSS Modules per component plus a small `app/global.css` for resets (no CSS framework)
 - [jsPDF](https://github.com/parallax/jsPDF) — Client-side PDF generation
 
 ### Running Locally

@@ -1,0 +1,7 @@
+.select {
+  border: 1px solid black;
+  box-shadow: 4px 4px black;
+  padding: 0.25rem;
+  cursor: pointer;
+  font: inherit;
+}

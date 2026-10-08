@@ -4,9 +4,10 @@ import { notFound } from "next/navigation";
 import { routing } from "../../src/i18n/routing";
 import { LangSync } from "../components/lang-sync";
 import { Navbar } from "../components/nav";
-import Footer from "../components/footer";
+import { Footer } from "../components/footer";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import styles from "./layout.module.css";
 
 type Props = {
   children: React.ReactNode;
@@ -30,9 +31,11 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       <LangSync locale={locale} />
-      <Navbar />
-      {children}
-      <Footer />
+      <div className={styles.root}>
+        <Navbar />
+        {children}
+        <Footer />
+      </div>
       <Analytics />
       <SpeedInsights />
     </NextIntlClientProvider>

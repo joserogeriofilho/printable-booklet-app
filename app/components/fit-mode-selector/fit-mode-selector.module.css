@@ -1,0 +1,72 @@
+.container {
+  h3 {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .options {
+    max-width: 24rem;
+  }
+}
+
+.card {
+  flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem;
+  cursor: pointer;
+
+  box-sizing: border-box;
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 4px 4px black;
+}
+
+.card:has(input:checked) {
+  background-color: darkgray;
+}
+
+.card:hover {
+  background-color: #57534e;
+}
+
+.card:has(.input:focus-visible) {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.image {
+  height: 5rem;
+  width: auto;
+}
+
+.text {
+  text-align: left;
+  font-size: 0.725rem;
+  font-weight: 400;
+}

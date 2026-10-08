@@ -1,0 +1,15 @@
+.root {
+  min-width: 0;
+}
+
+.header {
+  margin-bottom: 3rem;
+}
+
+.title {
+  margin-bottom: 0.75rem;
+}
+
+.paragraph {
+  margin-bottom: 0.5rem;
+}

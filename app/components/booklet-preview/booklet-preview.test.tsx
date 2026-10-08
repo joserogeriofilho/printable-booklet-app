@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import BookletPreview from "./booklet-preview";
+import { BookletPreview } from "./booklet-preview";
 
 vi.mock("next-intl", () => ({
   useTranslations:
@@ -27,11 +27,7 @@ function createFiles(count: number): File[] {
 }
 
 async function clickCard(pageNumber: number) {
-  const badges = screen.getAllByText(
-    `previewPage_number=${pageNumber}`,
-    { selector: "div" },
-  );
-  const card = badges[0].closest(".flex-shrink-0")!;
+  const card = screen.getByTestId(`page-card-${pageNumber - 1}`);
   await user.click(card);
 }
 
@@ -39,11 +35,6 @@ describe("BookletPreview", () => {
   beforeEach(() => {
     user = userEvent.setup();
     vi.clearAllMocks();
-    vi.stubGlobal("requestAnimationFrame", (fn: FrameRequestCallback) => {
-      setTimeout(fn, 0);
-      return 0;
-    });
-    vi.stubGlobal("cancelAnimationFrame", async () => {});
   });
 
   afterEach(() => {
@@ -59,6 +50,48 @@ describe("BookletPreview", () => {
     it("renders empty placeholder when files array is empty", async () => {
       render(<BookletPreview files={[]} totalPages={4} />);
       expect(screen.getByText("previewNoFiles")).toBeDefined();
+    });
+  });
+
+  describe("selected state", () => {
+    it("marks the clicked card as selected", async () => {
+      const files = createFiles(4);
+      render(<BookletPreview files={files} totalPages={4} />);
+
+      await clickCard(2);
+
+      expect(
+        screen.getByTestId("page-card-1").getAttribute("aria-pressed"),
+      ).toBe("true");
+    });
+
+    it("moves selection when clicking a different card", async () => {
+      const files = createFiles(4);
+      render(<BookletPreview files={files} totalPages={4} />);
+
+      await clickCard(1);
+      expect(
+        screen.getByTestId("page-card-0").getAttribute("aria-pressed"),
+      ).toBe("true");
+
+      await user.click(screen.getByText("moveModalCancel"));
+      await clickCard(3);
+
+      expect(
+        screen.getByTestId("page-card-0").getAttribute("aria-pressed"),
+      ).toBe("false");
+      expect(
+        screen.getByTestId("page-card-2").getAttribute("aria-pressed"),
+      ).toBe("true");
+    });
+
+    it("does not set aria-pressed on empty page slots", async () => {
+      const files = createFiles(2);
+      render(<BookletPreview files={files} totalPages={4} />);
+
+      expect(
+        screen.getByTestId("page-card-2").getAttribute("aria-pressed"),
+      ).toBeNull();
     });
   });
 
@@ -127,7 +160,7 @@ describe("BookletPreview", () => {
       render(<BookletPreview files={files} totalPages={4} />);
 
       await clickCard(1);
-      const overlay = screen.getByRole("spinbutton").closest(".fixed")!;
+      const overlay = screen.getByTestId("move-modal-overlay");
       await user.click(overlay);
 
       expect(screen.queryByRole("spinbutton")).toBeNull();
