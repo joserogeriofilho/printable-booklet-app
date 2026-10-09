@@ -3,6 +3,7 @@
 import { usePathname, useRouter } from "../../../src/i18n/navigation";
 import { useLocale } from "next-intl";
 import { routing } from "../../../src/i18n/routing";
+import { Select } from "../ui/select";
 import styles from "./locale-switcher.module.css";
 
 export function LocaleSwitcher() {
@@ -11,9 +12,10 @@ export function LocaleSwitcher() {
   const router = useRouter();
 
   return (
-    <select
+    <Select
       value={locale}
       onChange={(e) => router.replace(pathname, { locale: e.target.value })}
+      aria-label="Language"
       className={styles.select}
     >
       {routing.locales.map((l) => (
@@ -21,6 +23,6 @@ export function LocaleSwitcher() {
           {l}
         </option>
       ))}
-    </select>
+    </Select>
   );
 }

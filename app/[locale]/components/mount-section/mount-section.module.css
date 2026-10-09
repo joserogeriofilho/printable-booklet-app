@@ -1,0 +1,25 @@
+.stepTitle {
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  width: fit-content;
+}
+
+.instructionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.instructionsContainer img {
+  width: 50%;
+}
+
+@media (min-width: 640px) {
+  .instructionsContainer {
+    flex-direction: row;
+  }
+
+  .instructionsContainer img {
+    width: 100%;
+  }
+}

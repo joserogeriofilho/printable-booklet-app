@@ -1,9 +1,28 @@
 .root {
   min-width: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+
+  img {
+    width: 15rem;
+    height: fit-content;
+    border: 1px solid black;
+  }
+
+  @media (max-width: 680px) {
+    flex-direction: column;
+    gap: 2.5rem;
+
+    img {
+      width: 100%;
+      margin: 0 auto 0 auto;
+    }
+  }
 }
 
 .header {
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .title {

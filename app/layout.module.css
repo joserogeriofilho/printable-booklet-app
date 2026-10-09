@@ -4,17 +4,11 @@
   margin-right: auto;
 }
 
-.main {
-  flex: 1 1 auto;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  padding: 1.5rem;
-}
-
 @media (min-width: 1280px) {
-  .main {
-    padding-left: 0;
-    padding-right: 0;
+  html {
+    background-color: lightgray;
+    background-image: url("/images/grid-bg.svg");
+    background-repeat: repeat;
+    background-size: 16px 16px;
   }
 }

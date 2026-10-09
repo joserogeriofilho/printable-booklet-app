@@ -38,11 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={styles.body}>
-        <main className={styles.main}>
-          {children}
-        </main>
-      </body>
+      <body className={styles.body}>{children}</body>
     </html>
   );
 }

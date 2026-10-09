@@ -1,0 +1,55 @@
+.button {
+  composes: pressable focusRing from "../primitives.module.css";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font: inherit;
+  text-decoration: none;
+  user-select: none;
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: var(--shadow);
+  background-color: var(--color-surface);
+  color: var(--color-surface-fg);
+}
+
+.md {
+  padding: 0.625rem 1.25rem;
+}
+
+.sm {
+  padding: 0.375rem 0.75rem;
+}
+
+.primary {
+  background-color: var(--color-primary);
+  color: var(--color-primary-fg);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: var(--color-primary-fg);
+}
+
+.icon {
+  padding: 0.375rem 0.5rem;
+}
+
+.icon:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: var(--color-primary-fg);
+}
+
+.button[aria-current="page"] {
+  background-color: var(--color-primary);
+  color: var(--color-primary-fg);
+}
+
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

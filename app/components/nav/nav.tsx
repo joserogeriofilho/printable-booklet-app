@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "../../../src/i18n/navigation";
 import { ThemeToggle } from "../theme-toggle";
 import { LocaleSwitcher } from "../locale-switcher";
+import { Button } from "../ui/button";
 import styles from "./nav.module.css";
 
 const navItems = [
@@ -23,13 +24,15 @@ export function Navbar() {
     <nav className={styles.nav} id="nav">
       <div className={styles.links}>
         {navItems.map(({ path, key }) => (
-          <Link
+          <Button
             key={path}
+            as={Link}
             href={path}
-            className={pathname === path ? styles.active : undefined}
+            variant="secondary"
+            aria-current={pathname === path ? "page" : undefined}
           >
             {t(key)}
-          </Link>
+          </Button>
         ))}
       </div>
       <div className={styles.controls}>

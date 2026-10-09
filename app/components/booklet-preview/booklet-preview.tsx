@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import type { FitMode } from "../../../src/domain/booklet-utils";
+import { Button } from "../ui/button";
 import styles from "./booklet-preview.module.css";
 
 interface BookletPreviewProps {
@@ -226,10 +227,11 @@ export function BookletPreview({
             <h3>
               {t("moveModalTitle", { from: showMoveModal + 1 })}
             </h3>
-            <button
+            <Button
+              variant="icon"
+              size="sm"
               onClick={handleModalClose}
               aria-label="Close"
-              className={styles.modalClose}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -242,7 +244,7 @@ export function BookletPreview({
               >
                 <path d="M18 6 6 18M6 6l12 12" />
               </svg>
-            </button>
+            </Button>
           </div>
           <input
             type="number"
@@ -263,18 +265,12 @@ export function BookletPreview({
             </p>
           )}
           <div className={styles.modalActions}>
-            <button
-              onClick={handleModalClose}
-              className={styles.modalButton}
-            >
+            <Button variant="secondary" size="sm" onClick={handleModalClose}>
               {t("moveModalCancel")}
-            </button>
-            <button
-              onClick={handleMoveConfirm}
-              className={styles.modalButton}
-            >
+            </Button>
+            <Button variant="secondary" size="sm" onClick={handleMoveConfirm}>
               OK
-            </button>
+            </Button>
           </div>
         </div>
       </div>
