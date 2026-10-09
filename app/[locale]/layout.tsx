@@ -31,9 +31,9 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       <LangSync locale={locale} />
-      <div className={styles.root}>
+      <div className={styles.page}>
         <Navbar />
-        {children}
+        <main className={styles.main}>{children}</main>
         <Footer />
       </div>
       <Analytics />
