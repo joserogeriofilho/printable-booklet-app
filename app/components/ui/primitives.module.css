@@ -1,0 +1,37 @@
+.surface {
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: var(--shadow);
+  background-color: var(--color-surface);
+}
+
+.surfaceSm {
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--color-surface);
+}
+
+.field {
+  border: var(--border-width) solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-surface-fg);
+  font: inherit;
+}
+
+.pressable {
+  cursor: pointer;
+  transition:
+    transform 60ms ease,
+    box-shadow 60ms ease,
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+.pressable:active:not(:disabled) {
+  transform: translate(var(--shadow-offset), var(--shadow-offset));
+  box-shadow: 0 0 0 var(--color-shadow);
+}
+
+.focusRing:focus-visible {
+  outline: 2px solid var(--color-border);
+  outline-offset: 2px;
+}
