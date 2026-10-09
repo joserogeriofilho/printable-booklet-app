@@ -25,6 +25,22 @@
   box-shadow: var(--shadow);
   background-color: var(--color-surface);
   font: inherit;
+  user-select: none;
+  transition:
+    transform 60ms ease,
+    box-shadow 60ms ease,
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+.fileInput::file-selector-button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-primary-fg);
+}
+
+.fileInput::file-selector-button:active {
+  transform: translate(var(--shadow-offset), var(--shadow-offset));
+  box-shadow: 0 0 0 var(--color-shadow);
 }
 
 .errorMessage {

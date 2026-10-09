@@ -32,26 +32,33 @@ export function FitModeSelector({ value, onChange }: FitModeSelectorProps) {
   const t = useTranslations("Home");
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      role="group"
+      aria-label={t("fitModeLabel")}
+    >
       <h3>{t("fitModeLabel")}</h3>
       <div className={styles.options}>
         {MODES.map(({ mode, labelKey, imgSrc }) => {
           const selected = value === mode;
           return (
-            <label key={mode} className={styles.card}>
+            <button
+              key={mode}
+              type="button"
+              aria-pressed={selected}
+              onClick={() => onChange(mode)}
+              className={[
+                styles.card,
+                selected ? styles.cardSelected : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+            >
               <span className={styles.header}>
-                <input
-                  type="radio"
-                  name="fitMode"
-                  value={mode}
-                  checked={selected}
-                  onChange={() => onChange(mode)}
-                  className={styles.input}
-                />
                 <span className={styles.text}>{t(labelKey)}</span>
               </span>
               <img src={imgSrc} alt="" className={styles.image} />
-            </label>
+            </button>
           );
         })}
       </div>

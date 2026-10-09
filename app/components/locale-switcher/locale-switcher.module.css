@@ -1,4 +1,5 @@
 .select {
   width: auto;
   padding: 0.25rem 0.5rem;
+  box-shadow: var(--shadow);
 }
