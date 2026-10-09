@@ -36,7 +36,8 @@ export function Navbar() {
         ))}
       </div>
       <div className={styles.controls}>
-        <ThemeToggle />
+        {/* Removing the theme toggle while the dark theme has not been implemented */}
+        {/* <ThemeToggle /> */}
         <LocaleSwitcher />
       </div>
     </nav>
