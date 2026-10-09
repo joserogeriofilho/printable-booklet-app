@@ -18,33 +18,25 @@
 }
 
 .card {
+  composes: surface pressable focusRing from "../ui/primitives.module.css";
   flex: 1 1 0%;
   min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.625rem;
-  cursor: pointer;
-
-  box-sizing: border-box;
   padding: 1rem;
-  background-color: white;
-  border: 1px solid black;
-  box-shadow: 4px 4px black;
+  cursor: pointer;
+  font: inherit;
+  color: var(--color-surface-fg);
 }
 
-.card:has(input:checked) {
+.card[aria-pressed="true"] {
   background-color: darkgray;
 }
 
-.card:hover {
-  background-color: #57534e;
-}
-
-.card:has(.input:focus-visible) {
-  outline: 2px solid black;
-  outline-offset: 2px;
+.card:hover:not([aria-pressed="true"]) {
+  background-color: var(--color-primary-hover);
 }
 
 .header {
@@ -52,12 +44,6 @@
   align-items: center;
   gap: 0.25rem;
   width: 100%;
-}
-
-.input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
 }
 
 .image {

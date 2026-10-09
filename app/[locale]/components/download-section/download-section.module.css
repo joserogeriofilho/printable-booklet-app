@@ -1,0 +1,26 @@
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+.stepTitle {
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  width: fit-content;
+}
+
+.downloadRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.error {
+  margin-top: 0.75rem;
+}

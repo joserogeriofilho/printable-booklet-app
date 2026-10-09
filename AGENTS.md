@@ -20,7 +20,9 @@ Node.js version: `.nvmrc` pins to **22**.
 ## Architecture
 
 - **`src/domain/`** — Core business logic: booklet layout math and PDF generation (jsPDF). This is the engine. Changes here affect the whole app.
-- **`app/[locale]/page.tsx`** — Single page UI (client component). Form-driven: sheets, size, images → generates and downloads PDF.
+- **`app/[locale]/page.tsx`** — Single page UI (client component). Form-driven: sheets, size, images → generates and downloads PDF. It composes page-specific sections from **`app/[locale]/components/`** and the **`app/[locale]/use-booklet-form.ts`** hook (state + handlers).
+- **`app/components/ui/`** — Reusable design-system primitives: `Button` (polymorphic, `primary | secondary | icon`), `Select`, `Field`, `Stepper`, plus `primitives.module.css` (shared `.surface` / `.field` / `.pressable` / `.focusRing` classes pulled in with `composes`).
+- **Design tokens** — CSS custom properties in `app/global.css` (`--color-*`, `--shadow*`, `--border-width`, `--shadow-offset`). Components reference `var(--…)` and must not hard-code borders/shadows.
 - **`app/components/`** — One folder per component, all named after the component: `<name>.tsx` (the component, named export, filename matches the folder name), `<name>.module.css` (component styles), `index.ts` (re-exports the component). Tests live in the same folder (e.g. `booklet-preview/booklet-preview.test.tsx`).
 - **Static export only** (`next.config.js`: `output: "export"`). No SSR, no API routes, no middleware, no server components with runtime logic. `next build` produces `out/`.
 
@@ -28,7 +30,7 @@ Node.js version: `.nvmrc` pins to **22**.
 
 - **Package manager is `pnpm`**, not npm/yarn.
 - **Styling is native CSS** (no CSS framework). Each component has its own CSS Module (`<name>.module.css` in the component folder); `app/global.css` holds only resets (`box-sizing`, `html`/`body`/`ul`/`img` defaults), while `app/layout.tsx` uses `app/layout.module.css` for the app shell. Pages use their co-located `<page>.module.css`.
-- **Dark mode** uses a `.dark` class on `<html>` (toggled by `ThemeToggle`). In CSS Modules, target it with `:global(.dark) .className`.
+- **Dark mode** uses a `.dark` class on `<html>` (toggled by `ThemeToggle`). In CSS Modules, target it with `:global(.dark) .className`, and keep overrides **scoped to the components that theme today** (github-button, booklet-preview) — don't add global `.dark` token flips.
 - **TypeScript**: `"strict": false`, but `"strictNullChecks": true`.
 - **`trailingSlash: true`** is set — all routes end with `/`.
 - **Images are unoptimized** — required for static export.

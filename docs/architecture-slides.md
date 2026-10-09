@@ -165,6 +165,7 @@ Architecture Overview
 - **Static Export** — `output: "export"`, no SSR / API routes
 - **jsPDF** — Client-side PDF generation
 - **Native CSS** — hand-written stylesheet, dark mode via `.dark` class
+- **Design tokens + `ui/` primitives** — CSS variables in `app/global.css`; `Button`/`Select`/`Field`/`Stepper` under `app/components/ui/`
 - **next-intl** — Internationalisation (i18n)
 - **TypeScript** — `strictNullChecks: true`
 - **Vitest** — Unit tests with jsdom
@@ -194,11 +195,12 @@ function detectLocale(): string {
 
 ## Main Page UI
 
-`app/[locale]/page.tsx` — Form-driven, 3-step flow
+`app/[locale]/page.tsx` — composes five section components driven by a `use-booklet-form` hook
 
-- **Step 1 — Setup**: Booklet size (A5–A8), sheet count (1–50), image upload
-- **Step 2 — Preview**: Placeholder (dashed box)
-- **Step 3 — Download**: Generates `a4.pdf` via `generatePdf()`
+- **Step 1 — Setup**: Booklet size (A5–A8), sheet count (1–50), image upload, fit mode
+- **Step 2 — Preview**: Drag-and-drop page reordering
+- **Step 3 — Download**: Generates `a4.pdf` via `generatePdf()` (with progress)
+- **Step 4 — Mount**: Illustrated print/cut/fold/staple instructions
 
 Validation: disables download until `files.length >= totalPages`
 
@@ -292,7 +294,8 @@ File → FileReader → dataURL → HTMLImageElement
 - **Domain isolation** — `app/domain/` has no UI or framework imports
 - **Canvas pipeline** — handles any browser-decodable image format
 - **Typed booklet sizes** — `BookletSize` union from `Sizes` const object
-- **Dark mode** — native CSS, class-based toggle
+- **Dark mode** — native CSS, class-based toggle, overrides scoped per component
+- **Layout split** — root layout owns the document; the `[locale]` layout owns the nav/`<main>`/footer shell
 
 ---
 

@@ -47,7 +47,7 @@
   },
   "About": {
     "title": "About me",
-    "description": "<p>Hi, there! I hope you enjoyed using this tool as much as I enjoyed building it. I'm a frontend developer with a passion for self-publishing, zines, artsy stuff, pixel art and a bunch of other non-tech related things. I also happen to find open-source cool as hell, sort of a positive punk attitude in the face of the big tech giants and consumerism culture we live in. Thus, this project you are now seeing was born.</p><p>If you want to know more about me, you can find me at <github>GitHub</github> or <linkedin>LinkedIn</linkedin>.</p>"
+    "description": "<p>Hi, there! I hope you enjoyed using this tool as much as I enjoyed building it. I'm a frontend developer with a passion for self-publishing, zines, artsy stuff, pixel art and a bunch of other non-tech related things.</p><p>If you want to know more about me, you can find me at <github>GitHub</github> or <linkedin>LinkedIn</linkedin>.</p>"
   },
   "NotFound": {
     "title": "404 - Page Not Found",

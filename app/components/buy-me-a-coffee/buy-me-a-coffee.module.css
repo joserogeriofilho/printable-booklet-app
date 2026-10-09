@@ -1,8 +1,9 @@
 .link {
+  composes: pressable from "../ui/primitives.module.css";
   display: inline-flex;
   align-items: center;
   background-color: #ffdd00;
-  box-shadow: 4px 4px black;
+  box-shadow: var(--shadow);
 }
 
 .image {

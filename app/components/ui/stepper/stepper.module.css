@@ -1,0 +1,48 @@
+.stepper {
+  composes: field from "../primitives.module.css";
+  display: flex;
+  width: 100%;
+}
+
+.button {
+  composes: focusRing from "../primitives.module.css";
+  padding: 0.625rem 1rem;
+  min-width: 44px;
+  user-select: none;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font: inherit;
+  transition: background-color 120ms ease;
+}
+
+.button:hover:not(:disabled) {
+  background-color: var(--color-muted);
+}
+
+.button:active:not(:disabled) {
+  background-color: var(--color-muted-fg);
+}
+
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.stepper .button:first-child {
+  border-right: var(--border-width) solid var(--color-border);
+}
+
+.stepper .button:last-child {
+  border-left: var(--border-width) solid var(--color-border);
+}
+
+.input {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+}

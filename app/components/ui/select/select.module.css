@@ -1,0 +1,7 @@
+.select {
+  composes: field from "../primitives.module.css";
+  width: 100%;
+  padding: 0.625rem 1rem;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}

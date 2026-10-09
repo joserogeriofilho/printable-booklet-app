@@ -1,5 +1,18 @@
-.root {
+.page {
   display: flex;
   flex-direction: column;
   gap: 3rem;
+}
+
+.main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (min-width: 1280px) {
+  .page {
+    padding: 3.5rem;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow);
+  }
 }

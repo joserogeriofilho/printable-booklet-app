@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { Button } from "../ui/button";
 import styles from "./theme-toggle.module.css";
 
 export function ThemeToggle() {
@@ -38,12 +39,13 @@ export function ThemeToggle() {
   if (!mounted) return null;
 
   return (
-    <button
+    <Button
+      variant="icon"
       onClick={toggleTheme}
       className={styles.button}
       aria-label={t("label")}
     >
       {isDark ? "☀️" : "🌙"}
-    </button>
+    </Button>
   );
 }

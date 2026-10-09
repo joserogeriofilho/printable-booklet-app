@@ -8,16 +8,16 @@ export default function Page() {
 
   return (
     <section className={styles.root}>
+      <img
+        src="/images/profile.jpeg"
+        alt=""
+        aria-hidden="true"
+        className={styles.image}
+      />
       <header className={styles.header}>
-        <h1 className={styles.title}>
-          {t("title")}
-        </h1>
+        <h1 className={styles.title}>{t("title")}</h1>
         {t.rich("description", {
-          p: (chunks) => (
-            <p className={styles.paragraph}>
-              {chunks}
-            </p>
-          ),
+          p: (chunks) => <p className={styles.paragraph}>{chunks}</p>,
           github: (chunks) => (
             <a
               href="https://github.com/joserogeriofilho"
